@@ -46,7 +46,4 @@ Steps to install gtkwave:
 $ sudo apt-get update  
 $ sudo apt install gtkwave  
 
-![GTKWave Installation Status]img/gtkwave.png)
-
----
-
+![GTKWave Installation Status](img/gtkwave.png)
