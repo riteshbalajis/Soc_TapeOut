@@ -24,7 +24,7 @@ $ make config-gcc
 $ make  
 $ sudo make install  
 
-![Yosys Installation Status](img/yosys.jpg)
+![Yosys Installation Status](img/yosys.png)
 
 ---
 
@@ -35,7 +35,7 @@ Steps to install iverilog:
 $ sudo apt-get update  
 $ sudo apt-get install iverilog  
 
-![Iverilog Installation Status](img/iverilog.jpg)
+![Iverilog Installation Status](img/iverilog.png)
 
 ---
 
