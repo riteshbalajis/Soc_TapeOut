@@ -1,16 +1,16 @@
-# Tool Installation - Week 0
+# ⬢ Tool Installation - Week 0 ⬢
+
+✦ **System Configuration** ✦  
+• RAM: 6 GB  
+• HDD: 50 GB  
+• OS: Ubuntu 20.04+  
+• CPU: 4 vCPU  
+
+⏹ System Ready  
 
 ---
 
-## System Configuration
-
-6GB RAM, 50 GB HDD  
-Ubuntu 20.04+  
-4 vCPU  
-
----
-
-## 1--> Yosys
+## ➤ Yosys
 
 $ sudo apt-get update  
 $ git clone https://github.com/YosysHQ/yosys.git  
@@ -27,8 +27,7 @@ $ sudo make install
 ![Yosys Installation Status](img/yosys.png)
 
 ---
-
-## Iverilog
+## ➤ Iverilog
 
 Steps to install iverilog:  
 
@@ -39,7 +38,7 @@ $ sudo apt-get install iverilog
 
 ---
 
-## GTKWave
+## ➤ GTKWave
 
 Steps to install gtkwave:  
 
