@@ -24,7 +24,7 @@ $ make config-gcc
 $ make  
 $ sudo make install  
 
-![Yosys Installation Status](Week0/Task2/img/yosys.jpg)
+![Yosys Installation Status](img/yosys.jpg)
 
 ---
 
@@ -35,7 +35,7 @@ Steps to install iverilog:
 $ sudo apt-get update  
 $ sudo apt-get install iverilog  
 
-![Iverilog Installation Status](Week0/Task2/img/iverilog.jpg)
+![Iverilog Installation Status](img/iverilog.jpg)
 
 ---
 
@@ -46,7 +46,7 @@ Steps to install gtkwave:
 $ sudo apt-get update  
 $ sudo apt install gtkwave  
 
-![GTKWave Installation Status](Week0/Task2/img/gtkwave.png)
+![GTKWave Installation Status]img/gtkwave.png)
 
 ---
 
