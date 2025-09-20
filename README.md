@@ -1,11 +1,10 @@
-# ⚡SoC Tapeout Course – Learning Journey  
+# 🏿 SoC Tapeout Course – Learning Journey  
 
 Welcome to my **SoC (System-on-Chip) Tapeout Journey 🚀**.  
-This repository documents the entire path from **idea → design → silicon** using open-source EDA tools.  
+This repository documents the entire path from **idea → design → silicon** using EDA tools.  
 Every week adds new building blocks toward the final goal: **a working chip taped out!**  
 
 ---
-add this 
 
 ## ╰┈➤ Week 0️⃣ – Introduction to SoC Tapeout Flow  
 
@@ -48,25 +47,15 @@ The ultimate goal is to **run the application on the chip**.
 ### 📌 Task 2: Software Installation  
 
 To perform simulation, synthesis, and verification, we install the following **open-source tools**:  
+  
 
-#### 🔹 Installed Tools  
-1. **Yosys** → Logic synthesis  
-2. **Icarus Verilog (iverilog)** → RTL simulation  
-3. **GTKWave** → Waveform visualization  
+### 🔹 Installed Tools
 
----
+- **Yosys**  
+  An **open-source logic synthesis tool** used to convert RTL code (Verilog) into gate-level netlists.
 
-#### 🔹 Installation Commands  
+- **Icarus Verilog (iverilog)**  
+  A **Verilog simulation tool** used to simulate RTL designs and verify functionality.
 
-```bash
-# Update packages
-sudo apt-get update
-
-# Install Icarus Verilog
-sudo apt-get install iverilog
-
-# Install GTKWave
-sudo apt-get install gtkwave
-
-# Install Yosys
-sudo apt-get install yosys
+- **GTKWave**  
+  A **waveform viewer** to visualize simulation results and debug signals.
