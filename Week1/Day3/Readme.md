@@ -29,7 +29,11 @@ The boolean expression is optimized using K-Map,Quine–McCluskey etc...
 
 Example: 
 
+        Y=a?(b?(a&c):c):(!c) is optimized as y=ac+a'c' 
+    ![ddd](opt4_block.png)
 
+
+---
 
 ## Sequential Logic Optimization:
 
@@ -57,6 +61,8 @@ in this the output of Flip Fliup depends on the set . If set=1 then the output q
 
 ![Logic Diagram ](wave.png)
 
+---
+
 
 ## Advanced Optimization:
 
@@ -71,7 +77,309 @@ in this the output of Flip Fliup depends on the set . If set=1 then the output q
 
 ![Retiming](img)
 
-## Lab on Optimization:
+---
+
+## Combinational Optimization:
 
 ### command
         opt_clean -purge
+
+
+### Generating Optimized Netlist
+
+1.. Start Yosys
+
+        yosys
+
+2. Read the Library File
+This command loads the technology library.
+
+        read_liberty -lib path_to_sky130_fd_sc_hd_tt_025c-1v80.lib
+
+3. Read the Design File
+This command loads your RTL design.
+
+        read_verilog design.v(good_mux.v)
+
+4. Synthesize the Module
+This command synthesizes the specified top-level module into a generic netlist.
+
+        synth -top module_name(good_mux)
+   
+5. Logical Function Optimization
+Optimizes the design by removing redundant logic and simplifying logical functions for a minimal implementation
+
+        opt_clean - purge
+  
+6. Technology Mapping
+This step maps the generic netlist to the specific gates available in the library.
+
+        abc -liberty path_to_sky130_fd_sc_hd_tt_025c-1v80.lib
+
+
+7. Visualize the Optimized Netlist
+This command generates a visual representation of the synthesized netlist.
+
+        show  
+
+## Examples (Lab):
+
+### Rtl code:
+
+    module opt_check(input a,input b,output y);
+        assign y=a?b:0;
+    endmodule
+
+### Optimization :
+
+    ![opt1](directory.op1)
+
+### Netlist 
+
+    ![Design](directory.op1)
+
+---
+### Rtl code:
+
+    module opt_check2 (input a , input b , output y);
+	    assign y = a?1:b;
+    endmodule
+
+### Optimization :
+
+    ![opt1](directory.op1)
+
+### Netlist 
+
+    ![Design](directory.op1)
+
+---
+
+### Rtl code:
+
+    module opt_check3 (input a , input b, input c , output y);
+	    assign y = a?(c?b:0):0;
+    endmodule
+
+### Optimization :
+
+    ![opt1](directory.op1)
+
+### Netlist 
+
+    ![Design](directory.op1)
+
+---
+
+### Rtl code:
+
+    module opt_check4 (input a , input b , input c , output y);
+        assign y = a?(b?(a & c ):c):(!c);
+    endmodule
+
+### Optimization :
+
+    ![opt1](directory.op1)
+
+### Netlist 
+
+    ![Design](directory.op1)
+
+---
+
+### Mutliple Module(Rtl code):
+
+    module sub_module1(input a , input b , output y);
+        assign y = a & b;
+    endmodule
+
+
+    module sub_module2(input a , input b , output y);
+        assign y = a^b;
+    endmodule
+
+
+    module multiple_module_opt(input a , input b , input c , input d , output y);
+    wire n1,n2,n3;
+
+    sub_module1 U1 (.a(a) , .b(1'b1) , .y(n1));
+    sub_module2 U2 (.a(n1), .b(1'b0) , .y(n2));
+    sub_module2 U3 (.a(b), .b(d) , .y(n3));
+
+    assign y = c | (b & n1); 
+
+
+    endmodule
+
+### Optimization :
+
+    ![opt1](directory.op1)
+
+### Netlist 
+
+    ![Design](directory.op1)
+
+---
+
+
+---
+## Sequential Optimization
+
+
+
+### Rtl code:
+
+    module dff_const1(input clk, input reset, output reg q);
+    always @(posedge clk, posedge reset)
+    begin
+        if(reset)
+            q <= 1'b0;
+        else
+            q <= 1'b1;
+    end
+
+    endmodule
+
+
+### Netlist 
+
+    ![Design](directory.op1)
+
+---
+### Rtl code:
+
+    module dff_const2(input clk, input reset, output reg q);
+    always @(posedge clk, posedge reset)
+    begin
+        if(reset)
+            q <= 1'b1;
+        else
+            q <= 1'b1;
+    end
+
+    endmodule
+
+### Netlist 
+
+    ![Design](directory.op1)
+
+---
+### Rtl code:
+    module dff_const3(input clk, input reset, output reg q);
+    reg q1;
+
+    always @(posedge clk, posedge reset)
+    begin
+        if(reset)
+        begin
+            q <= 1'b1;
+            q1 <= 1'b0;
+        end
+        else
+        begin
+            q1 <= 1'b1;
+            q <= q1;
+        end
+    end
+
+    endmodule
+
+### Netlist 
+
+    ![Design](directory.op1)
+
+---
+### Rtl code:
+    module dff_const4(input clk, input reset, output reg q);
+    reg q1;
+
+    always @(posedge clk, posedge reset)
+    begin
+        if(reset)
+        begin
+            q <= 1'b1;
+            q1 <= 1'b1;
+        end
+        else
+        begin
+            q1 <= 1'b1;
+            q <= q1;
+        end
+    end
+
+    endmodule
+### Netlist 
+
+    ![Design](directory.op1)
+
+---
+### Rtl code:
+
+    module dff_const5(input clk, input reset, output reg q);
+    reg q1;
+
+    always @(posedge clk, posedge reset)
+    begin
+        if(reset)
+        begin
+            q <= 1'b0;
+            q1 <= 1'b0;
+        end
+        else
+        begin
+            q1 <= 1'b1;
+            q <= q1;
+        end
+    end
+
+    endmodule
+
+### Netlist 
+
+    ![Design](directory.op1)
+
+---
+## Counter Example 
+### Rtl code:
+
+    module counter_opt (input clk , input reset , output q);
+    reg [2:0] count;
+    assign q = count[0];
+
+    always @(posedge clk ,posedge reset)
+    begin
+        if(reset)
+            count <= 3'b000;
+        else
+            count <= count + 1;
+    end
+
+    endmodule
+### Netlist 
+
+    ![Design](directory.op1)
+
+---
+### Rtl code:
+
+    module counter_opt (input clk , input reset , output q);
+    reg [2:0] count;
+    assign q = (count[2:0] == 3'b100);
+
+    always @(posedge clk ,posedge reset)
+    begin
+        if(reset)
+            count <= 3'b000;
+        else
+            count <= count + 1;
+    end
+
+    endmodule
+
+### Netlist 
+
+    ![Design](directory.op1)
+
+---
+
+
