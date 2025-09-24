@@ -159,10 +159,10 @@ To verify that the synthesized netlist is functionally equivalent to the origina
 
 ## Summary – Day 1
 
-✔️ Learned how RTL designs are simulated with Icarus Verilog
+ Learned how RTL designs are simulated with Icarus Verilog
 
-✔️ Generated and viewed waveforms in GTKWave
-
-✔️ Understood how Yosys synthesizes RTL into a gate-level netlist
-
-✔️ synthesized netlist against the original RTL design
+   [] Generated and viewed waveforms in GTKWave
+   
+   [] Understood how Yosys synthesizes RTL into a gate-level netlist
+   
+   [] synthesized netlist against the original RTL design
