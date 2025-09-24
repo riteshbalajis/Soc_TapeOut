@@ -1,5 +1,7 @@
 #  Week 1 – Day 2  
 
+## Table of Contents:
+
 - [Library File Overview](#library-file-overview)  
   - [Naming Convention](#-naming-convention)  
   - [Cell Variants](#-cell-variants)  
@@ -7,7 +9,7 @@
   - [Hierarchical Synthesis](#-hierarchical-synthesis)  
   - [Flat Synthesis](#-flat-synthesis)  
   - [Generating Flatten Netlist](#generating--flatten-netlist)  
-- [Use of synth -top module_name](#use-of-synth--top-modulename)  
+- [Use of synth top module_name](#use-of-synth--top-modulename)  
 - [Why Flip-Flop Coding Style](#why-flip--flop-coding-style)  
   - [Types of Flip-Flop](#types-of-flip-flop)  
   - [Asynchronous Reset / Set](#asynchronous-reset--set)  
@@ -17,6 +19,8 @@
   - [Multiply by 2](#code)  
   - [Multiply by 9](#code-mul-by-9)  
 - [Summary](#summary)  
+
+___
 
 ## Library File Overview  
 
@@ -63,13 +67,14 @@ Example:
 ### Design Code:
 //code here
 
-![Multiple Module](img.png)
 
 --> Hierarchical Synthesis:
 
-![Multiple Module](img.png)
+![Multiple Module_Hierarchical Netlist](/img/mul_module_netlist.png)
 
 --> Flatten Synthesis:
+
+
 
 ### Generating  Flatten Netlist
 
@@ -106,7 +111,7 @@ This command generates a visual representation of the synthesized netlist.
 
         show  
 
-![Multiple Module](img.png)
+![Multiple Module Flatten Netlist](/img/mul_module_flatten_netlist.png)
 
 ---
 
@@ -195,13 +200,13 @@ This command generates a visual representation of the synthesized netlist.
 
 ### Waveform
 
-![Wave form of Asynchronous_Reset_dff](img.png)
+![Asynchronous_Reset_dff](img/dff_asynch_res.png)
 
 -when reset is high immediately the output becomes logic 0 even the clock is in positive level.
 
 ### Netlist
 
-![Netlist of Asynchronous_reset_dff](img.png)
+![Netlist of Asynchronous_reset_dff](img/dff_asynch_res_netlist.png)
 
 
 
@@ -218,11 +223,11 @@ This command generates a visual representation of the synthesized netlist.
         endmodule
 ### Waveform
 
-![Wave form of Aynchronous_Set_dff](img.png)
+![Wave form of Aynchronous_Set_dff](img/dff_async_set_wave.png)
 
 ### Netlist
 
-![Netlist of Asynchronous_set_dff](img.png)
+![Netlist of Asynchronous_set_dff](img/dff_async_set_netlist.png)
 
 ---
 
@@ -244,14 +249,14 @@ This command generates a visual representation of the synthesized netlist.
 
 ### Waveform
 
-![Wave form of Synchronous_Reset_dff](img.png)
+![Wave form of Synchronous_Reset_dff](img/dff_synch_res_wave.png)
 
 - when the reset get triggered but the output is affected at the positive edge of the clock
 
 ### Netlist:
 
 
-![Netlist of Synchronous_Reset_dff](img.png)
+![Netlist of Synchronous_Reset_dff](img/dff_synch_res_netlist.png)
 
 ---
 
@@ -273,11 +278,11 @@ This command generates a visual representation of the synthesized netlist.
 
 ### Waveform:
 
-![Wave form of Asynchronous_Synchronous_Reset_dff](img.png)
+![Wave form of Asynchronous_Synchronous_Reset_dff](img/async_sync_wave.png)
 
 ### Netlist:
 
-![Netlist of Asynchronous_Synchronous_Reset_dff](img.png)
+![Netlist of Asynchronous_Synchronous_Reset_dff](img/async_sync_netlist.png)
 
 
 ## Optimization - Multiplication:
@@ -293,7 +298,7 @@ This command generates a visual representation of the synthesized netlist.
 
 ### Netlist:
 
-![Netlist of mul2](img.png)
+![Netlist of mul2](img/mul2.png)
 
 
 ### Code (Mul by 9):
@@ -314,7 +319,7 @@ y[5:0]={a,a}
 
 ### Netlist:
 
-![Netlist of mul2](img.png)
+![Netlist of mul2](img/mul9.png)
 
 
 ---
