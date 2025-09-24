@@ -99,12 +99,11 @@ This command loads the technology library.
 3. Read the Design File
 This command loads your RTL design.
 
-        read_verilog design.v(good_mux.v)
-
+        read_verilog design.v
 4. Synthesize the Module
 This command synthesizes the specified top-level module into a generic netlist.
 
-        synth -top module_name(good_mux)
+        synth -top module_name
    
 5. Logical Function Optimization
 Optimizes the design by removing redundant logic and simplifying logical functions for a minimal implementation
