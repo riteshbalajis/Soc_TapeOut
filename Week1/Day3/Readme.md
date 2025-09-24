@@ -56,3 +56,22 @@ The expression y becomes  y=0.a' -> y=0' -> y=1(always) ---> Sequential Constant
 in this the output of Flip Fliup depends on the set . If set=1 then the output q immediately (asynchronous set) becomes one.But when the set=0 it waits for posedge to follow the d (0) to output. So we can describe y=set -->(Wrong). 
 
 ![Logic Diagram ](wave.png)
+
+
+## Advanced Optimization:
+
+### State Optimization : 
+- reducing number of states in fsm to improve the harware implementations
+
+### Clonning:      
+-  When a single gate's output is connected to the inputs of many other gates (a high fanout), it can cause a significant signal delay . To reduce this identical copy of that gate/ff is created and divided among the multiple gates/ff.
+
+### Retiming:
+-  It is a technique in digital circuit design that moves registers (flip-flops) across combinational logic to reduce the clock cycle time.
+
+![Retiming](img)
+
+## Lab on Optimization:
+
+### command
+        opt_clean -purge
