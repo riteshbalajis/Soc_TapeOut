@@ -30,7 +30,7 @@ The boolean expression is optimized using K-Map,Quine–McCluskey etc...
 Example: 
 
         Y=a?(b?(a&c):c):(!c) is optimized as y=ac+a'c' 
-    ![ddd](opt4_block.png)
+![Boolean Optimization](img/opt4_block.png)
 
 
 ---
