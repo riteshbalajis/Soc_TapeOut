@@ -123,14 +123,14 @@ This command synthesizes the specified top-level module into a generic netlist.
    
 
    ![](img/yosys_cd1.png)
-6. Technology Mapping
+4. Technology Mapping
 This step maps the generic netlist to the specific gates available in the library.
 
         abc -liberty path_to_sky130_fd_sc_hd_tt_025c-1v80.lib
 
      ![](img/yosys_cd2.png)
 
-8. Visualize the Netlist
+5. Visualize the Netlist
 This command generates a visual representation of the synthesized netlist.
 
         show
