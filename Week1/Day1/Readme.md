@@ -33,11 +33,12 @@ A simulator evaluates the **output** of a design **only when there is a change i
 If the input remains unchanged, the output is not re-evaluated.
 
 **Simulation flow:**
-
-![Work Flow of Stimulation](img/iverilog flow.png)
+![Stimulation Work Flow ](img/iverilog_flow.png)
 
 Value Change Dump (VCD)
 VCD is a file format that records changes in signal values over time, which can then be visualized using a waveform viewer like GTKWave.
+
+---
 
 ## Lab: Simulating a 2:1 Mux
 For this lab, we'll use a pre-existing repository for practice.
@@ -57,7 +58,7 @@ This command downloads the workshop files, including the Verilog files located i
         iverilog good_mux.v tb_good_mux.v
 
 
-   ![](img/iverilog cp.png)
+   ![](img/iverilog_cp.png)
 
 3. Running the simulation: This command creates a VCD file.
 
@@ -67,11 +68,13 @@ This command downloads the workshop files, including the Verilog files located i
 
         gtkwave tb_good_mux.vcd
 
-![](img/iverilog cp2.png)
+   ![](img/iverilog_cp2.png)
 
 ## Output WaveForm 
 
  ![2x1 Mux Waveform ](img/mux_gtkwave.png)
+
+ ----
 
 
 ## Yosys: RTL to Netlist Synthesis
@@ -80,7 +83,9 @@ Yosys is a tool that converts an RTL design into a netlist. A netlist is a colle
 
 ### Yosys Workflow
 
-![Yosys workflow](lib/yosys_workflow.png)
+![Yosys workflow](img/yosys_workflow.png)
+
+---
 
 ## Technology Library File
 A technology library is a collection of logical gate models with different characteristics, or "flavors." 
@@ -91,6 +96,8 @@ Number of inputs: 1, 2, 3,...
 Performance: Gates with different delays, optimized for slower (low power/area) or faster (high power/area) operation.
 
 The synthesis tool chooses the appropriate gate based on the design's **"constraints"**, which define the required timing and performance targets.
+
+---
 
 ## Lab: Generating a Netlist for a 2:1 Mux
 To generate a netlist, follow these steps within the Yosys shell:
@@ -115,23 +122,27 @@ This command synthesizes the specified top-level module into a generic netlist.
         synth -top module_name(good_mux)
    
 
+   ![](img/yosys_cd1.png)
 6. Technology Mapping
 This step maps the generic netlist to the specific gates available in the library.
 
         abc -liberty path_to_sky130_fd_sc_hd_tt_025c-1v80.lib
 
-7. Visualize the Netlist
+     ![](img/yosys_cd2.png)
+
+8. Visualize the Netlist
 This command generates a visual representation of the synthesized netlist.
 
         show
 
-  ![](img/yosys_cd1.png)
-  ![](img/yosys_cd2.png)
+  
   ![](img/yosys_cd3.png)
   
+---
 
-
+## Netlist of 2x1 Mux:
 ![Netlist of 2x1 Mux](img/mux_yosys.png)
+
 ## Verification of the Netlist
 To verify that the synthesized netlist is functionally equivalent to the original RTL design, you can use the same testbench with the netlist. The waves generated should be identical.
 
@@ -144,7 +155,9 @@ To verify that the synthesized netlist is functionally equivalent to the origina
 
 ![netlist verification flow](img/yosys_verification.png)
 
-Summary – Day 1
+---
+
+## Summary – Day 1
 
 ✔️ Learned how RTL designs are simulated with Icarus Verilog
 
