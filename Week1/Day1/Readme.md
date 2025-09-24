@@ -131,7 +131,7 @@ This command generates a visual representation of the synthesized netlist.
   
 
 
-![Netlist of 2x1 Mux](img/mux_yosys)
+![Netlist of 2x1 Mux](img/mux_yosys.png)
 ## Verification of the Netlist
 To verify that the synthesized netlist is functionally equivalent to the original RTL design, you can use the same testbench with the netlist. The waves generated should be identical.
 
