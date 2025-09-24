@@ -34,7 +34,7 @@ If the input remains unchanged, the output is not re-evaluated.
 
 **Simulation flow:**
 
-![Work Flow of Stimulation](putyourdirectory/stimulationflow.png)
+![Work Flow of Stimulation](img/iverilog flow.png)
 
 Value Change Dump (VCD)
 VCD is a file format that records changes in signal values over time, which can then be visualized using a waveform viewer like GTKWave.
@@ -56,13 +56,22 @@ This command downloads the workshop files, including the Verilog files located i
 
         iverilog good_mux.v tb_good_mux.v
 
-2. Running the simulation: This command creates a VCD file.
+
+   ![](img/iverilog cp.png)
+
+3. Running the simulation: This command creates a VCD file.
 
         ./a.out
 
-3. Visualizing the waveform: Open the VCD file with GTKWave to view the simulation results.
+4. Visualizing the waveform: Open the VCD file with GTKWave to view the simulation results.
 
         gtkwave tb_good_mux.vcd
+
+![](img/iverilog cp2.png)
+
+## Output WaveForm 
+
+ ![2x1 Mux Waveform ](img/mux_gtkwave.png)
 
 
 ## Yosys: RTL to Netlist Synthesis
@@ -71,7 +80,7 @@ Yosys is a tool that converts an RTL design into a netlist. A netlist is a colle
 
 ### Yosys Workflow
 
-![Yosys workflow](putyourdirectory/yosysworkflow.png)
+![Yosys workflow](lib/yosys_workflow.png)
 
 ## Technology Library File
 A technology library is a collection of logical gate models with different characteristics, or "flavors." 
@@ -104,20 +113,25 @@ This command loads your RTL design.
 This command synthesizes the specified top-level module into a generic netlist.
 
         synth -top module_name(good_mux)
+   
 
-5. Technology Mapping
+6. Technology Mapping
 This step maps the generic netlist to the specific gates available in the library.
 
         abc -liberty path_to_sky130_fd_sc_hd_tt_025c-1v80.lib
 
-6. Visualize the Netlist
+7. Visualize the Netlist
 This command generates a visual representation of the synthesized netlist.
 
         show
 
+  ![](img/yosys_cd1.png)
+  ![](img/yosys_cd2.png)
+  ![](img/yosys_cd3.png)
+  
 
-![Netlist of 2x1 Mux](putyourdirectory/netlistmux.png)
 
+![Netlist of 2x1 Mux](img/mux_yosys)
 ## Verification of the Netlist
 To verify that the synthesized netlist is functionally equivalent to the original RTL design, you can use the same testbench with the netlist. The waves generated should be identical.
 
@@ -128,7 +142,7 @@ To verify that the synthesized netlist is functionally equivalent to the origina
 
 * The waveforms are compared to confirm correctness.
 
-![netlist verification flow](putyourdirectory/netlistverification.png)
+![netlist verification flow](img/yosys_verification.png)
 
 Summary – Day 1
 
