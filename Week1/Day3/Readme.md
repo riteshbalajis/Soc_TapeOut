@@ -81,7 +81,7 @@ in this the output of Flip Fliup depends on the set . If set=1 then the output q
 
 ## Combinational Optimization:
 
-### command
+### command to perform optimization
         opt_clean -purge
 
 
@@ -132,11 +132,11 @@ This command generates a visual representation of the synthesized netlist.
 
 ### Optimization :
 
-    ![opt1](directory.op1)
+![1](img/opt1_block.png)
 
 ### Netlist 
 
-    ![Design](directory.op1)
+![1](img/opt_check_netlist.png)
 
 ---
 ### Rtl code:
@@ -147,11 +147,11 @@ This command generates a visual representation of the synthesized netlist.
 
 ### Optimization :
 
-    ![opt1](directory.op1)
+![2](img/opt2_block.png)
 
 ### Netlist 
 
-    ![Design](directory.op1)
+![2](img/opt_check2_netlist.png)
 
 ---
 
@@ -163,11 +163,11 @@ This command generates a visual representation of the synthesized netlist.
 
 ### Optimization :
 
-    ![opt1](directory.op1)
+![3](img/opt3_block.png)
 
 ### Netlist 
 
-    ![Design](directory.op1)
+![3](img/opt_check3_netlist.png)
 
 ---
 
@@ -179,16 +179,21 @@ This command generates a visual representation of the synthesized netlist.
 
 ### Optimization :
 
-    ![opt1](directory.op1)
+![4](img/opt4_block.png)
 
 ### Netlist 
 
-    ![Design](directory.op1)
-
+![4](img/opt_check4_netlist.png)
 ---
 
-### Mutliple Module(Rtl code):
+### Mutliple Module:
 
+	command : flatten
+
+	this command is used in between syth -top and abc-liberty as same as procedure in (#Generating Optimized Netlist)
+
+	
+### RTL Code:
     module sub_module1(input a , input b , output y);
         assign y = a & b;
     endmodule
@@ -211,13 +216,11 @@ This command generates a visual representation of the synthesized netlist.
 
     endmodule
 
-### Optimization :
-
-    ![opt1](directory.op1)
 
 ### Netlist 
 
-    ![Design](directory.op1)
+![](img/multiple_module_opt_netlist.png)
+
 
 ---
 
@@ -243,7 +246,7 @@ This command generates a visual representation of the synthesized netlist.
 
 ### Netlist 
 
-    ![Design](directory.op1)
+   ![1](img/dff_const1_netlist.png)
 
 ---
 ### Rtl code:
@@ -261,7 +264,7 @@ This command generates a visual representation of the synthesized netlist.
 
 ### Netlist 
 
-    ![Design](directory.op1)
+   ![2](img/dff_const2_netlist.png)
 
 ---
 ### Rtl code:
@@ -286,7 +289,7 @@ This command generates a visual representation of the synthesized netlist.
 
 ### Netlist 
 
-    ![Design](directory.op1)
+  ![3](img/dff_const1_netlist.png)
 
 ---
 ### Rtl code:
@@ -310,7 +313,7 @@ This command generates a visual representation of the synthesized netlist.
     endmodule
 ### Netlist 
 
-    ![Design](directory.op1)
+   ![4](img/dff_const1_netlist.png)
 
 ---
 ### Rtl code:
@@ -336,7 +339,7 @@ This command generates a visual representation of the synthesized netlist.
 
 ### Netlist 
 
-    ![Design](directory.op1)
+   ![5](img/dff_const1_netlist.png)
 
 ---
 ## Counter Example 
@@ -357,7 +360,7 @@ This command generates a visual representation of the synthesized netlist.
     endmodule
 ### Netlist 
 
-    ![Design](directory.op1)
+   ![](img/counter_opt_netlist.png)
 
 ---
 ### Rtl code:
@@ -378,7 +381,7 @@ This command generates a visual representation of the synthesized netlist.
 
 ### Netlist 
 
-    ![Design](directory.op1)
+   ![](img/counter_opt2_netlist.png)
 
 ---
 
