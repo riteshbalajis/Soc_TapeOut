@@ -65,12 +65,25 @@ Example:
 - Often results in **better optimization**, but harder to debug/manage.  
 
 ### Design Code:
-//code here
+    module sub_module2 (input a, input b, output y);
+  	  assign y = a | b;
+    endmodule
+    
+    module sub_module1 (input a, input b, output y);
+    	assign y = a&b;
+    endmodule
+
+
+    module multiple_modules (input a, input b, input c , output y);
+    	wire net1;
+    	sub_module1 u1(.a(a),.b(b),.y(net1));  //net1 = a&b
+    	sub_module2 u2(.a(net1),.b(c),.y(y));  //y = net1|c ,ie y = a&b + c;
+    endmodule
 
 
 --> Hierarchical Synthesis:
 
-![Multiple Module_Hierarchical Netlist](/img/mul_module_netlist.png)
+![Multiple Module_Hierarchical Netlist](/Day2/img/mul_module_h_netlist.png)
 
 --> Flatten Synthesis:
 
@@ -111,7 +124,7 @@ This command generates a visual representation of the synthesized netlist.
 
         show  
 
-![Multiple Module Flatten Netlist](/img/mul_module_flatten_netlist.png)
+![Multiple Module Flatten Netlist](/img/mul_module_f_netlist.png)
 
 ---
 
@@ -278,11 +291,11 @@ This command generates a visual representation of the synthesized netlist.
 
 ### Waveform:
 
-![Wave form of Asynchronous_Synchronous_Reset_dff](img/async_sync_wave.png)
+![Wave form of Asynchronous_Synchronous_Reset_dff](img/dff_async_sync_wave.png)
 
 ### Netlist:
 
-![Netlist of Asynchronous_Synchronous_Reset_dff](img/async_sync_netlist.png)
+![Netlist of Asynchronous_Synchronous_Reset_dff](img/dff_async_sync_netlist.png)
 
 
 ## Optimization - Multiplication:
