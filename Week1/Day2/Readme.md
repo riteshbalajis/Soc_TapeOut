@@ -81,9 +81,9 @@ Example:
     endmodule
 
 
---> Hierarchical Synthesis:
+1. Hierarchical Synthesis:
 
-![Multiple Module_Hierarchical Netlist](/Day2/img/mul_module_h_netlist.png)
+![Multiple Module_Hierarchical Netlist](img/mul_module_h_netlist.png)
 
 --> Flatten Synthesis:
 
@@ -124,11 +124,12 @@ This command generates a visual representation of the synthesized netlist.
 
         show  
 
-![Multiple Module Flatten Netlist](/img/mul_module_f_netlist.png)
+![Multiple Module Flatten Netlist](img/mul_module_f_netlist.png)
+
 
 ---
 
-**Why**? --> The flattened Netlist uses NAND Gate with inverted input in the place of the OR Gate 
+### Why ? --> The flattened Netlist uses NAND Gate with inverted input in the place of the OR Gate 
 
 In CMOS Technology the OR Gate Design contains stacked PMOS which is not efficient as PMOS has poor mobility (holes are majority carrier) and stacked connection will further decrease the mobility.
 
