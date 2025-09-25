@@ -14,14 +14,8 @@ We also explore common mistakes like **blocking vs non-blocking statements**, se
 2. [Why GLS?](#why-gls)  
 3. [GLS Workflow](#gls-workflow)  
 4. [Example of GLS](#example-of-gls)  
-- [RTL Expression](#rtl-expression)  
-- [Equivalent Netlist](#equivalent-netlist)  
-- [Gate Level Models](#gate-level-models)  
 5. [Why Verification is Still Needed](#why-verification-is-still-needed)  
-- [Synthesis and Simulation Mismatch](#synthesis-and-simulation-mismatch)  
 6. [Blocking and Non-Blocking Statements](#blocking-and-non-blocking-statements)  
-- [Example](#example)  
-- [Expected Logic](#expected-logic)  
 7. [Summary](#summary)
 
 ---
@@ -98,9 +92,14 @@ The simulator works only on activity (i.e., changes in input signals).
 
 -This error is got corrected at the synthesis (depends on synthesis tool and library) .
 
+![Generating Wave Form of Synthesised_mux](img/bad_mux_wave_gen.png)
+
 ![Synthesised_mux](img/bad_mux_syntesised_wave.png)
 
 ### Netlist
+![Netlist Generation ](img/bad_mux_net_gen.png)
+
+
 ![Netlist](img/bad_mux_netlist.png)
 
 
@@ -133,6 +132,7 @@ The simulator works only on activity (i.e., changes in input signals).
 
 ### Output waveform:
 
+
 ![out](img/blocking_wave.png)
 
     a=0 ; b=0; c=1; Output Got d=1 
@@ -143,9 +143,18 @@ The simulator works only on activity (i.e., changes in input signals).
 -  (i.e) d=x&c , where x=(a|b)(previous) so d=(previous state)x&(current)c. The output will be wrong.
 - later only x is eqauated withe present(a|b)
 
-### Synthesised Output and Netlist:
+### Synthesised Output :
+
+![Waveform Generation](img/blocking_wave_gen.png)
 
 ![Synthesised Output](img/blocking_synth_wave1.png)
+
+### Netlist
+
+
+
+![Netlist Generation](img/blocking_net_gen.png)
+
 
 ![Netlist](img/blocking_netlist.png)
 
