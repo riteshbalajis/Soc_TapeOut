@@ -1,4 +1,4 @@
-# Day 3
+# Day 3 - Combinational and Sequential Optimization
 
 # Introduction to Optimization
 
@@ -70,7 +70,7 @@ When a ouput of a block is constant value(0/1) independent of the change in inpu
 
 #### Example:
 
-![Logic Diagram](diagram.png)
+![Logic Diagram](img/1.png)
 
 The output from the flip flop will be always 0.
 
@@ -78,11 +78,10 @@ The expression y becomes  y=0.a' -> y=0' -> y=1(always) ---> Sequential Constant
 
 #### Example (not sequential constant):
 
-![ Logic diagram ](diagram.png)
+![ Logic diagram ](img/2.png)
 
 in this the output of Flip Fliup depends on the set . If set=1 then the output q immediately (asynchronous set) becomes one.But when the set=0 it waits for posedge to follow the d (0) to output. So we can describe y=set -->(Wrong). 
 
-![Logic Diagram ](wave.png)
 
 ---
 
@@ -200,11 +199,11 @@ This command generates a visual representation of the synthesized netlist.
 
 ### Optimization :
 
-![4](img/opt4_block.png)
+![](img/opt4_block.png)
 
 ### Netlist 
 
-![4](img/opt_check4_netlist.png)
+![](img/opt_check3_netlist)
 ---
 
 ### Mutliple Module:
