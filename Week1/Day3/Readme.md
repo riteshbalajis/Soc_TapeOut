@@ -203,7 +203,7 @@ This command generates a visual representation of the synthesized netlist.
 
 ### Netlist 
 
-![](img/opt_check3_netlist)
+![](img/opt_check4_v.png)
 ---
 
 ### Mutliple Module:
