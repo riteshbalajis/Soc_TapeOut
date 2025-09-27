@@ -39,7 +39,6 @@ Rtl Code:
             y <= i1;
     end
     endmodule
-![Block of Incomp_If](img)
 
 ### Gtk_Wave(incomp_if):
 
@@ -127,7 +126,7 @@ Code:
 
 Gtk_wave:
 
-    ![incomp_case](img/incomp_case_vcd)
+![incomp_case](img/incomp_case_vcd)
 
 - when sel=2'b10 the output y goes to contsant value of previous output.So, latch is invoked at the circuit.
 
@@ -143,7 +142,7 @@ Gtk_wave:
 
 ![Netlist Generation](img/incomp_case_c.png)
 
-![Netlist](incomp_case_netlist.png)
+![Netlist](img/incomp_case_netlist.png)
 
 ---
 
@@ -165,7 +164,7 @@ Code:
 
 Gtk_wave:
 
-![comp_case](img/comp_case_vcd)
+![comp_case](img/comp_case_vcd.png)
 
 
 
@@ -179,9 +178,9 @@ Gtk_wave:
 
 ![Netlist Generation](img/comp_case_c.png)
 
-![Netlist](img/incomp_case_v.png)
+![Netlist](img/comp_case_c.png)
 
-![Netlist](img/incomp_casw_netlist.png)
+![Netlist](img/comp_casw_netlist.png)
 
 ### Logic 
 
@@ -215,7 +214,7 @@ Code:
 
 Gtk_wave:
 
-![incomp_case](partial_case_assign_wave.png)
+![](img/partial_case_assign_wave.png)
 
 - when sel=2'b01 the x goes to contsant value of previous output.
 
@@ -227,7 +226,6 @@ Gtk_wave:
 
 ![Netlist Generation](img/partial_case_assign_netlist.png)
 
-![Netlist](img/partial_case_netlist.png)
 
 ![](img/partial_case_block.png)
 ---
@@ -255,7 +253,7 @@ Code:
 
 Gtk_wave:
 
-    ![bad_case](img/bad_case_vcd.png)
+![bad_case](img/bad_case_vcd.png)
 
 - here sel=2'b11 the output y goes to contsant value 1 because of mutliple case condition are true.
 
@@ -353,15 +351,15 @@ Example:
 - the demux is implementes using case , if the mux is wide then is is not efficient to write multiple lines
 
 ### Demux_Output_Wave:
-![](demux_case_wave.png)
+![](img/demux_case_wave.png)
 
 ### Synthesis:
 
-![](demux_case_c.png)
+![](img/demux_case_c.png)
 
 ### Netlist
 
-![](demux_case_netlist.png)
+![](img/demux_case_netlist.png)
 
 ### Demux Using for loop:
 
@@ -386,17 +384,17 @@ Example:
 
 ### Demux_Output_Wave:
 
-![](de_mux_generate_wave.png)
+![](img/de_mux_generate_wave.png)
 
 ### Netlist
 
-![Netlist Generation](demux_generate_c.png)
+![Netlist Generation](img/demux_generate_c.png)
 
-![Netlist](demux_generate_netlist.png)
+![Netlist](img/demux_generate_netlist.png)
 
 ### Demux_Output_Wave (Synthesis):
 
-![](demux_generate_wave_sytnh.png)
+![](img/demux_generate_wave_sytnh.png)
 
 ---
 
@@ -443,30 +441,30 @@ Example:
 
 ### Rca_Output_Wave:
 
-![](rca_wave.png)
+![](img/rca_wave.png)
 
 ### Synthesis:
 
-![Read_verilog](lib/read_file_rca.png)
+![Read_verilog](img/read_file_rca.png)
 
-![](lib/rca_c.png)
+![](img/rca_c.png)
 
 ### Netlist:
-![](lib/rca_netlist.png)
+![](img/rca_netlist.png)
 
 ### Gls:
 
 - writing netlist file 
-![](lib/rca_write.png)
+![](img/rca_write.png)
 
 - generating output wave of synthesised rca
 
-![](lib/rca_gls.png)
+![](img/rca_gls.png)
 
-![](lib/rca_c_synth.png)
+![](img/rca_c_synth.png)
 
 ### RCA_Waveform:
-!()[lib/rca_wave_synth.png]
+![](img/rca_wave_synth.png)
 
 ---
 
