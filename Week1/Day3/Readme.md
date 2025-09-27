@@ -156,7 +156,7 @@ This command generates a visual representation of the synthesized netlist.
 
 ### Netlist 
 
-![1](img/opt_check_netlist.png)
+![](img/open_check_netlist.png)
 
 ---
 ### Rtl code:
