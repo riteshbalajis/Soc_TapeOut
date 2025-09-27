@@ -1,4 +1,4 @@
-# Day 1: RTL Design and Simulation Workshop
+# <h1 id="day1"> Day 1: RTL Design and Simulation Workshop </h1>
 
 ![RTL](https://img.shields.io/badge/RTL-Simulation-blue)
 ![Iverilog](https://img.shields.io/badge/Icarus_Verilog-Simulator-green)
