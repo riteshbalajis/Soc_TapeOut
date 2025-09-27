@@ -98,7 +98,6 @@ Rtl Code:
 
 -Counter shoulde contain inferred latch because of the principle of counter as it should increment from previous value so, in that case it is good to have inferred latch.
 
-![circuit of counter](counter.png)
 
 **Note**:
 - whatever the statementassignes inside if/case satement must be of reg variable.
@@ -132,11 +131,11 @@ Gtk_wave:
 
 - when sel=2'b10 the output y goes to contsant value of previous output.So, latch is invoked at the circuit.
 
-    ![incomp_case](img/incomp_case_vcd2)
+![incomp_case](img/incomp_case_vcd2.png)
 
 - when sel=2'b11 the output y goes to contsant value of previous output.So, latch is invoked at the circuit.
 
-[Synthesis Details](img/incomp_case_synth.png)
+![Synthesis Details](img/incomp_case_synth.png)
 
 - in this d-latch is used
 
@@ -166,13 +165,13 @@ Code:
 
 Gtk_wave:
 
-    ![comp_case](img/comp_case_vcd)
+![comp_case](img/comp_case_vcd)
 
 
 
 - when sel=2'b11 the output y goes to contsant value of previous output.So, latch is invoked at the circuit.
 
-[Synthesis Details](img/incomp_case_synth.png)
+![Synthesis Details](img/incomp_case_synth.png)
 
 - in this d-latch is used
 
@@ -186,7 +185,7 @@ Gtk_wave:
 
 ### Logic 
 
-![](img/case_logic.png)
+![logic](img/case_logic.png)
 
 ---
 
@@ -216,7 +215,7 @@ Code:
 
 Gtk_wave:
 
-    ![incomp_case](partial_case_assign_wave.png)
+![incomp_case](partial_case_assign_wave.png)
 
 - when sel=2'b01 the x goes to contsant value of previous output.
 
@@ -309,13 +308,10 @@ Example:
 - for loop is interated for no of inputs (n) times when select line matches with the k then it is assigned to output.
 
 ### Mux_Output_Wave:
-![fro_loop](img/mux_generate.png)
+![for_loop](img/mux_wave.png)
 
 - output shows the actual fucnitonality 4X1 Mux
 
-### Synthesis:
-
-![syntesis](img/mux_generate_c.png)
 
 ### Netlist
 
