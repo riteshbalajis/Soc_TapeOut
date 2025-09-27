@@ -1,4 +1,4 @@
-#  Week 1 – Day 2  
+#  Day 2 - Timing Libraries, Synthesis Styles & Efficient Flip-Flop Usage 
 
 ## Table of Contents:
 
