@@ -1,4 +1,22 @@
-# Day 5
+# Day 5 – Optimization in Synthesis
+
+##  Table of Contents
+- [IF Statement](#if-statement-)
+  - [Caution of IF Statement](#caution-of-if-satatement)
+    - [Inferred Latch](#inferred-latch)
+- [Case Statement](#case-statement)
+  - [Limitations](#limitations)
+    - [1. Inferred Latch](#1-inferred-latch)
+    - [2. Partial Assignment](#2-partial-assignment)
+    - [3. Overlapping Case](#3-overlapping-case)
+- [Looping Constructs](#looping-constructs)
+  - [For Loop](#for-loop)
+    - [1. Mux using For Loop](#1-mux-using-for-loop)
+    - [2. Demux using Case](#21-demux-using-case)
+    - [3. Demux using For Loop](#demux-using-for-loop)
+  - [For Generate](#for-generate)
+    - [Ripple Carry Adder](#exampleripple-carry-adder)
+---
 
 ## IF Statement :
 - It is a priority based logic ,checks the conditon one by one in order if one satsifies the if block gets terminates and come end of if block.
@@ -126,7 +144,7 @@ Code:
 
 Gtk_wave:
 
-![incomp_case](img/incomp_case_vcd)
+![incomp_case](img/incomp_case_vcd.png)
 
 - when sel=2'b10 the output y goes to contsant value of previous output.So, latch is invoked at the circuit.
 
@@ -468,6 +486,18 @@ Example:
 
 ---
 
+## 📝 Summary (Simple Version)
+
+- **IF statement**: Works like everyday decisions — “if this, then that.” But if you forget an “else,” the circuit may remember old values (latch).
+
+- **Case statement**: Like choosing from a menu of options. But if not all cases are covered, or if two overlap, it can confuse the circuit and create latches.
+
+- **Loops**:
+  - **For loop**: Good for repeating tasks inside a block, like quickly building a mux or demux.
+  - **For-generate**: Used to replicate hardware modules, like chaining full adders to make a ripple carry adder.
+
+
+  ---
 
 
 
