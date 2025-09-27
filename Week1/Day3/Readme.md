@@ -1,4 +1,27 @@
+# Day 3
 
+# Introduction to Optimization
+
+## Table of Contents
+- [Combinational Logic Optimization](#combinational-logic-optimization)
+  - [Methods](#methods-)
+    - [Constant Propagation](#constant-propogation)
+    - [Boolean Logic Optimization](#boolean-logic-optimization)
+- [Sequential Logic Optimization](#sequential-logic-optimization)
+  - [Methods](#methods--1)
+    - [Sequential Constant Propagation](#sequential-constant-)
+- [Advanced Optimization](#advanced-optimization)
+  - [State Optimization](#state-optimization-)
+  - [Cloning](#clonning-)
+  - [Retiming](#retiming)
+- [Combinational Optimization in Yosys](#combinational-optimization)
+  - [Generating Optimized Netlist](#generating-optimized-netlist)
+  - [Examples (Lab)](#examples-lab)
+- [Sequential Optimization Examples](#sequential-optimization)
+- [Counter Example](#counter-example)
+- [Summary](#summary)
+
+---
 # Introduction to Optimization
 
          i) Combinational Logic Optimization
@@ -75,7 +98,6 @@ in this the output of Flip Fliup depends on the set . If set=1 then the output q
 ### Retiming:
 -  It is a technique in digital circuit design that moves registers (flip-flops) across combinational logic to reduce the clock cycle time.
 
-![Retiming](img)
 
 ---
 
@@ -358,7 +380,8 @@ This command generates a visual representation of the synthesized netlist.
 
     endmodule
 ### Netlist 
-
+   ![](img/counter_opt_c.png)
+   ![](img/counter_opt_net.png)
    ![](img/counter_opt_netlist.png)
 
 ---
@@ -380,7 +403,18 @@ This command generates a visual representation of the synthesized netlist.
 
 ### Netlist 
 
+  ![](img/counter_opt2_c.png)
+   ![](img/counter_opt2_net.png)
    ![](img/counter_opt2_netlist.png)
+
+---
+
+## Summary
+This document covers **optimization in digital design** at both **combinational** and **sequential levels**.  
+- **Combinational optimization** reduces gates using **constant propagation** and **Boolean simplification** (K-map, Quine–McCluskey, etc.).  
+- **Sequential optimization** removes unnecessary registers using **sequential constant propagation**, **state optimization**, **retiming**, and **cloning**.  
+- Tools like **Yosys** automate these optimizations with commands (`opt_clean`, `abc`, `flatten`).  
+- Examples demonstrate how RTL code is transformed into simplified and efficient netlists.  
 
 ---
 
