@@ -486,7 +486,7 @@ Example:
 
 ---
 
-## 📝 Summary (Simple Version)
+## 📝 Summary 
 
 - **IF statement**: Works like everyday decisions — “if this, then that.” But if you forget an “else,” the circuit may remember old values (latch).
 
