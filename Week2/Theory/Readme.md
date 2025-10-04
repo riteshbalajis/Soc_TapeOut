@@ -1,4 +1,20 @@
 # BabySoC Fundamentals & Functional Modelling
+
+## Table of Contents
+- [System on Chip](#system-on-chip)
+- [Types of SoC](#types-of-soc)
+- [Advantages](#advantages)
+- [Challenges](#challenges)
+- [Components of an SoC](#components-of-an-soc)
+- [VSD BabySoC](#vsd-babysoc)
+- [Why VSD BabySoC](#why-vsd-babysoc)
+- [Parts of BabySoC](#parts-of-babysoc)
+  - [1. PLL (avsdpll_1v8)](#1-pll-avsdpll_1v8)
+  - [2. RISC-V Core (rvmyth)](#2-risc-v-core-rvmyth)
+  - [3. DAC (avsddac_3v3)](#3-dac-avsddac_3v3)
+- [Voltage Domains](#voltage-domains)
+- [Summary](#summary)
+- 
 # System on Chip
 
 A **System on a Chip (SoC)** is an integrated circuit (IC) that combines most or all of the essential components of a computer or electronic system onto a single microchip.
@@ -109,3 +125,14 @@ Designed for the exclusive use of a single customer and a specific application. 
 - **3.3V Domain:** High-voltage analog components (DAC, SPI I/O).  
 
 **Level Shifters (LS)** are used to interface signals safely between the two voltage domains.
+
+---
+
+## Summary
+
+This is an overview of VSD BabySoC. 
+Key takeaways:
+
+- **SoC Concepts:** Understanding integration of CPU, GPU, memory, interconnects, and I/O blocks.  
+- **VSD BabySoC Design:** Combines a RISC-V core, PLL, and DAC in two voltage domains for practical learning.  
+- **Goal:** Provides hands-on experience in exploring digital-analog interfacing, clock generation, and data conversion.  
