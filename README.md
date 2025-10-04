@@ -21,3 +21,8 @@ It summarizes the content covered and tasks completed each week.
 | **Day 3** | [Gate-Level Modeling and Simulation](/Week1/Day3) | Introduction to gate-level models, netlist generation, timing-aware vs functional models, and GLS verification. |
 | **Day 4** | [Gate-Level Simulation (GLS)](/Week1/Day4) | Detailed GLS process, blocking vs non-blocking statements, sensitivity list issues, and waveform analysis for verification. |
 | **Day 5** | [Optimization in Synthesis](/Week1/Day5) | IF/case statement pitfalls, inferred latches, partial/overlapping assignments, loops, for-generate, and ripple carry adder example. |
+
+| Week | Focus / Description | Details |
+|------|-------------------|---------|
+| [**Week 2**](/Week2) | BabySoC Fundamentals & Functional Modelling | Explored the VSD BabySoC modules including RISC-V core (rvmyth), PLL, and DAC. stimulated the modules (PLL,rvmyth,DAC) and observed waveforms in GTKWave to understand digital-analog interfacing and clock behavior. |
+
