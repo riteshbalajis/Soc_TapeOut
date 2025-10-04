@@ -71,7 +71,7 @@ Designed for the exclusive use of a single customer and a specific application. 
 
 **VSD BabySoC** is a simplified System-on-Chip (SoC) designed for open-source chip design learning and experimentation. It integrates key digital and analog components to demonstrate how different IP blocks interact within a chip environment. The design operates across two voltage domains — **1.8V** and **3.3V** — to support both low-power logic and analog peripherals.
 
-![](Soc_TapeOut/Week2/Lab/img/babysoc.png)
+![](Week2/Lab/img/babysoc.png)
 ---
 
 ## Why VSD BabySoC
