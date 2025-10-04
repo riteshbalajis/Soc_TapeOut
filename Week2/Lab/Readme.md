@@ -1,6 +1,17 @@
 
 # BabySoC Fundamentals & Functional Modelling
 
+## Table of Contents
+
+- [Cloning VSD BabySoC](#cloning-vsd-babysoc)
+- [Conversion of .tlv to .v (using SandPiper-SaaS)](#conversion-of-tlv-to-v-using-sandpiper-saas)
+- [Synthesis using Icarus Verilog](#synthesis-using-icarus-verilog)
+- [DAC (Digital to Analog)](#dac-digital-to-analog)
+- [PLL (Phase Locked Loop)](#pllphase-locked-loop)
+
+
+---
+
 ## Lab
 
 ## Cloning VSD BabySoC
@@ -22,6 +33,8 @@
 
 -testbench.v: The testbench.v generates clock and reset signals to drive the design under test.
 It also records waveforms in a .vcd file for analyzing the BabySoC’s behavior.
+
+---
 
 ## Converstion of .tlv to .v (using sandpiper-saas ):
 
@@ -74,12 +87,14 @@ It also records waveforms in a .vcd file for analyzing the BabySoC’s behavior.
 
 ![](img/convertion_v.png)
 
+---
+
 -**After Convertion :**
 ![](img/ls_module_ac.png)
 
 - while listing the files in modules the rvmyth.v is created as the converstion of rvmyth.tlv
 
-
+---
 
 ## Synthesis using Icarus Verilog
 
@@ -116,9 +131,11 @@ src/module/testbench.v: Main testbench file
 ![](img/entire_wave.png)
 
 - to convert analog format
+
 ![](img/analog_step.png)
 
 -rightclick on signal -> Data Format -> Analog -> Step
+--- 
 
 ## Dac (Digital to Analog)
 
@@ -132,7 +149,7 @@ src/module/testbench.v: Main testbench file
     vout=0+(780/1023)*(1-0)
     vout=780/1023 = 0.762 v
 
-
+---
 
 ## PLL(Phase Locked Loop):
 
@@ -142,6 +159,8 @@ src/module/testbench.v: Main testbench file
 
 
 ![](img/pll_zoom.png)
+
+---
 
 
 
