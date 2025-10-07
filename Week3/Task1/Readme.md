@@ -68,12 +68,14 @@
 
 ### 9. Write Synthesized Verilog Netlist
 - creating directory
+- ```
     cd output
     mkdir post_synth_sim
 
 - write verilog
-    write_verilog -noattr output/post_synth_sim/vsdbabysoc.synth.v
-
+```
+  write_verilog -noattr output/post_synth_sim/vsdbabysoc.synth.v
+```
 ---
 
 ## Synthesis and Waveform:
