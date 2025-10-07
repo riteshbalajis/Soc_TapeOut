@@ -72,7 +72,7 @@
     mkdir post_synth_sim
 
 - write verilog
-    write_verilog -noattr /home/ananya123/VSDBabySoCC/VSDBabySoC/output/post_synth_sim/vsdbabysoc.synth.v
+    write_verilog -noattr output/post_synth_sim/vsdbabysoc.synth.v
 
 ---
 
