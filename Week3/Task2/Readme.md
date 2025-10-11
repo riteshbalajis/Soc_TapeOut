@@ -31,6 +31,7 @@ Path between these two points.
 **Start point:** e.g., Flip-flop Q pin, input ports  
 **End point:** Flop D pin, output port  
 
+![](img/spep.png)
 ---
 
 ### Arrival Time:
@@ -93,6 +94,8 @@ Min Slew < Slew Time < Max Slew
 
 ## Reg to Reg Setup Analysis:
 
+![](img/artime.jpg)
+
 The circuit is converted to a **Directed Acyclic Graph (DAG)**.  
 Every logical gate is converted into nodes.
 
@@ -128,7 +131,7 @@ Every pin (input/output) is considered as a separate node.
 
 Transistor-level circuit for flops:
 
-![](img)
+
 
 ---
 
@@ -143,11 +146,13 @@ There will be a delay between D → QM and QM → Q.
 
 Ideal clock → Slew = 0
 
-![](negative and positive edge of clock img)
+![](img/fftolatch.jpg)
 
 ---
 
 ## Total Working
+
+![](img/negedge.jpg)
 
 ### At negative level of clock:
 - INV1, TR1, INV3 = ON  
@@ -162,10 +167,14 @@ At the end of the negative level, the data is present at the input of INV5.
 
 ---
 
+![](img/posedge.png)
+
 ### At positive level of clock:
 - INV2, TR2, INV3 = ON  
 - INV5, TR4, INV6 = ON  
 - Direct connection between INV5 to output Q.
+
+![](img/latchdiff.jpg)
 
 **Clk to Q delay:**  
 Time taken for D to reach Q from INV5 output to latch output (delay = TR4 + INV6 delays).
@@ -250,7 +259,6 @@ b4/y
 Where:  
 `θ` → Time delay at the combinational circuit.
 
-![](img)
 
 θ + 1 + 2 > h + 1 + 3 + 4
 θ + Δ1 = h + Δ2 + hu (Hold Uncertainty)
@@ -338,7 +346,7 @@ There are four possible combinations to analyze:
 
 By doing these combinations, OCV analysis is performed.
 
-![](diagram of clock pull-in and push-out)
+
 
 - **Clock Pull-In:** When data required time delay is reduced  
 - **Clock Push-Out:** When data arrival time delay increases  
