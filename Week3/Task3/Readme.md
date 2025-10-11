@@ -1,6 +1,6 @@
 # Static Timing Analysis of VSDBabySoC using OpenSTA
 
-## 1. 
+## 1. Sudo Update
 
 - Ubuntu 24.04 (or similar Linux)
 - Installed packages:
@@ -68,36 +68,29 @@ Files to include:
 
 - Create vsdbabysoc_min_max_delays.tcl in examples/BabySoC:
 
-    # Load Liberty Libraries
-    read_lib -library ../timing_libs/sky130_fd_sc_hd__tt_025C_1v80.lib
-    read_lib -library ../timing_libs/avsdpll.lib
-    read_lib -library ../timing_libs/avsddac.lib
-
-    # Read Synthesized Netlist
-    read_verilog vsdbabysoc.synth.v
-
-    # Link Top-Level Design
-    link_design vsdbabysoc
-
-    # Apply Timing Constraints
-    read_sdc vsdbabysoc_synthesis.sdc
-
-    # Generate Reports
-    report_checks -outfile sta_report.txt
-    report_worst_slack -max -outfile sta_worst_max_slack.txt
-    report_worst_slack -min -outfile sta_worst_min_slack.txt
-    report_wns -outfile sta_wns.txt
-    report_tns -outfile sta_tns.txt
-
-    # Exit
-    exit
+    
+        read_lib -library ../timing_libs/sky130_fd_sc_hd__tt_025C_1v80.lib
+        read_lib -library ../timing_libs/avsdpll.lib
+        read_lib -library ../timing_libs/avsddac.lib
+        read_verilog vsdbabysoc.synth.v
+  
+        link_design vsdbabysoc
+        read_sdc vsdbabysoc_synthesis.sdc
+  
+        report_checks -outfile sta_report.txt
+        report_worst_slack -max -outfile sta_worst_max_slack.txt
+        report_worst_slack -min -outfile sta_worst_min_slack.txt
+        report_wns -outfile sta_wns.txt
+        report_tns -outfile sta_tns.txt
+    
+        exit
 
 ## 6. Run Static Timing Analysis
 
     cd examples/BabySoC
     sta ./vsdbabysoc_min_max_delays.tcl
 
-![img](img/staanalysis-c.png)
+![img](img/staanalysis_c.png)
 
 ## 7. View Timing Reports
 
