@@ -162,3 +162,190 @@ To analyze how **velocity saturation** affects the **drain current (ID)** charac
 ---
 
 - This experiment confirms that **keeping W/L constant does not guarantee identical behavior** when **L scales down**.   **Velocity saturation** becomes a dominant limiting factor, influencing both **transfer (ID–VGS)** and **output (ID–VDS)** characteristics.
+
+---
+
+## CMOS Inverter:
+
+- CMOS Inverter is a inverter circuit which has both PMOS and NMOS connected 
+
+- CMOS - Complimentary MOSFET
+
+![](img/cmos_inv.png)
+
+### Basic Overview:
+
+    - when Vin is low (Vin<(-Vth)) -> PMOS is in  ON  and NMOS is in OFF -> Charges the Capacitor -> Vout is High 
+
+    - when Vin is High (Vin>Vth) -> NMOS is in ON and PMOS is in OFF -> Discharges the capacitor -> Vout is Low
+
+
+### Ngspice:
+
+![](img/day3_c1.png)
+
+- pmos is initalized with width = 0.84 length = 0.15 w/l= 5.6
+- nmos is initalized with width = 0.36 length = 0.15 w/l= 2.4
+- width of pmos (0.84) == 2.3 times of width of nmos(0.36)
+
+- vin is varied from 0 to 1.8 with step of 0.01v 
+
+![](img/cmos_cons.png)
+
+### Voltage Transfer Characterstics Waveform
+
+![](img/cmos_w.png)
+
+- Region 1: In this region the input is in the range of (0,Vtn). Since the input voltage is less than Vtn, the NMOS is in cutoff region
+
+Pmos - liner ; Nmos - Cutoff 
+
+-Region 2: In this region the input is in the range of (Vtn,Vdd/2). Since the input voltage is greater than Vtn the NMOS is conducting and it jumps to saturation as it has large Vds across it(Vout is high). PMOS still remains in the linear region.
+
+Pmos - Liner ; Nmos - saturation
+
+- Region 3: In this region the input voltage is Vdd/2.. At this voltage both the NMOS and PMOS are in saturation and the output drops drastically from Vdd to   Vdd/2. At this point a large amount of current flows from the supply.
+
+Pmos - Saturation ; Nmos - Saturation
+
+-Region 4: In this region the input voltage is in the range of (Vdd/2 , Vdd-Vth). Here the PMOS remains in saturation and NMOS moves to linear region.
+
+Pmos - Saturation ; Nmos - linear
+
+- Region 5: In this region PMOS moves from saturation to cutoff as the volatge increased. The Nmos remains in linear Region.
+
+Pmos - Cutoff ; Nmos- linear
+
+
+
+
+###  Switching threshold ( Vm ) (point where ( V{in} = V{out} ))
+
+
+- the vin and vout is same at this point
+
+###  Width of Pmos=2*(width of Nmos):
+
+- Ngspice Code:
+![](img/pmos_w72c.png)
+
+- Switching Threshold
+![](img/pmos_w72_mval.png)
+
+---
+
+###  Width of Pmos= 3*(width of Nmos):
+
+- Ngspice Code:
+![](img/pmos_w108c.png)
+
+- Waveform
+![](img/pmos_w108w.png)
+
+- Switching Threshold
+![](img/pmos_w108v.png)
+
+---
+
+###  Width of Pmos= 4*(width of Nmos):
+
+- Ngspice Code:
+![](img/pmos_w144c.png)
+
+- Waveform
+![](img/pmos_w144w.png)
+
+- Switching Threshold
+![](img/pmos_w144v.png)
+
+---
+
+###  Width of Pmos= 3*(width of Nmos):
+
+- Ngspice Code:
+![](img/pmos_w180c.png)
+
+- Waveform
+![](img/pmos_w180w.png)
+
+- Switching Threshold
+![](img/pmos_w180v.png)
+
+---
+
+Conclusion :
+- as the width of the PMOS increases, its drive strength (current capability) increases. This makes the pull-up network stronger compared to the pull-down NMOS network. As a result, the inverter’s switching threshold shifts toward a higher input voltage.
+
+### rise delay time vs fall delay time:
+
+    ngspice day3_inv_trans_Wp084_Wn036.spice
+    plot out vs time in
+
+    ![](img/cmos2_cons.png) 
+
+ - wave form
+
+![](img/cmos2_w.png)
+
+- this is the graph between input pulse and output of inverter. It is clearly visible that there is some time delay for clock transition to low and inv output which goes to high that is rise delay time.
+
+- similary the dealy betwwen input 0 ->1 and output to transition 1-> 0 is fall dealy
+
+### rise delay
+
+![](img/cmos_rise_w.png)
+
+- at 0.9 the difference between to signal is taken to compute dealy time.
+
+![](img/cmos_rise_value.png)
+
+- delay time = 2.482-0.9 =1.582
+
+---
+
+### fall delay
+
+![](img/cmos_fall.png)
+
+- at 0.9 the difference between to signal is taken to compute dealy time.
+
+![](img/cmos_fall_value.png)
+
+- delay time = 4.334-0.9 = 3.434
+
+### Conclusion:
+- has the pmos width increase the current flow through is increase and capacitor charges soon. then the rise delay time is reduced to soon it reacts to 1 to 0 of input signal.
+
+
+## Noise Margin:
+
+![](img/nm.png)
+
+- VIL : it is voltage where the range of (0,vil) denotes the input 0 (low)
+- VIH : above the vih voltage that is (vih,vdd) anything in this range of voltage is considered as input 1(high)
+
+- VOL : it is the range of output whihc denoetes the output is 0 low. 
+Always  Vol < Vil because it should be given to next ciruit which should easily get the accurate low (0) value.
+
+- VOH : it is the voltage above which represent the output is 1-high. Always VOH > VIH to act as a input to next circuitn as proper high -1 .
+
+### Spice Code:
+
+![](img/nm_s.png)
+
+
+![](img/nm_c.png)
+
+### Wave form
+
+![](img/nm_w.png)
+ 
+ - from this graph we have considered a point for voh,vih,vol,vil
+
+### Conclusion
+
+ - Noise Margin High= VOH-VIH = 1.74898 - 0.734783 = 1.014197
+
+ - Noise Margin Low= VIL-VOL = 1.01087 - 0.0673469 = 0.9435231
+   
+
