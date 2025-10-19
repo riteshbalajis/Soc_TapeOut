@@ -226,57 +226,61 @@ Pmos - Cutoff ; Nmos- linear
 
 ###  Width of Pmos=2*(width of Nmos):
 
-- Ngspice Code:
+### Ngspice Code:
+  
 ![](img/pmos_w72c.png)
 
-- Switching Threshold
+### Switching Threshold
+
 ![](img/pmos_w72_mval.png)
 
 ---
 
 ###  Width of Pmos= 3*(width of Nmos):
 
-- Ngspice Code:
+### Ngspice Code:
 ![](img/pmos_w108c.png)
 
-- Waveform
+### Waveform
 ![](img/pmos_w108w.png)
 
-- Switching Threshold
+### Switching Threshold
 ![](img/pmos_w108v.png)
 
 ---
 
 ###  Width of Pmos= 4*(width of Nmos):
 
-- Ngspice Code:
+### Ngspice Code:
 ![](img/pmos_w144c.png)
 
-- Waveform
+### Waveform
 ![](img/pmos_w144w.png)
 
-- Switching Threshold
+### Switching Threshold
 ![](img/pmos_w144v.png)
 
 ---
 
 ###  Width of Pmos= 3*(width of Nmos):
 
-- Ngspice Code:
+### Ngspice Code:
 ![](img/pmos_w180c.png)
 
-- Waveform
+### Waveform
 ![](img/pmos_w180w.png)
 
-- Switching Threshold
+### Switching Threshold
 ![](img/pmos_w180v.png)
 
----
+
 
 Conclusion :
 - as the width of the PMOS increases, its drive strength (current capability) increases. This makes the pull-up network stronger compared to the pull-down NMOS network. As a result, the inverter’s switching threshold shifts toward a higher input voltage.
 
-### rise delay time vs fall delay time:
+---
+
+### Rise delay time vs Fall delay time:
 
     ngspice day3_inv_trans_Wp084_Wn036.spice
     plot out vs time in
@@ -291,7 +295,7 @@ Conclusion :
 
 - similary the dealy betwwen input 0 ->1 and output to transition 1-> 0 is fall dealy
 
-### rise delay
+### Rise delay
 
 ![](img/cmos_rise_w.png)
 
@@ -303,7 +307,7 @@ Conclusion :
 
 ---
 
-### fall delay
+### Fall delay
 
 ![](img/cmos_fall.png)
 
@@ -316,6 +320,7 @@ Conclusion :
 ### Conclusion:
 - has the pmos width increase the current flow through is increase and capacitor charges soon. then the rise delay time is reduced to soon it reacts to 1 to 0 of input signal.
 
+---
 
 ## Noise Margin:
 
@@ -372,47 +377,47 @@ Always  Vol < Vil because it should be given to next ciruit which should easily 
 
   |(y1-y2)/(x2-x1) | = (1.72041-0.077551)/(0.762222-1.00444)
 
-  = 6.78
+  Gain = 6.78
 
   - Vdd = 1.6 V
 
   ![](img/sv2.png)
 
-  = 8.03
+  Gain = 8.03
 
   - Vdd = 1.4 V
 
   ![](img/sv3.png)
 
-  = 8.53
+  Gain = 8.53
 
   - vdd = 1.2 V
 
   ![](img/sv4.png)
 
-  = 10.02
+  Gain = 10.02
 
   - vdd = 1  v
 
   ![](img/sv5.png)
 
-  = 9.38
+  Gain = 9.38
 
   - vdd = 0.8 V
 
   ![](img/sv6.png)
 
-  = 8.48
+  Gain = 8.48
 
 ### Transient Analysis 
 
 ### for for wp=0.84 wn=0.36 at vdd= 1.8
 
-- spice code:
+### Spice code:
 
 ![](inv/)
 
-- waveform :
+### waveform :
 
 ![](img/cmos2_w.png)
 
