@@ -446,8 +446,8 @@ Always  Vol < Vil because it should be given to next ciruit which should easily 
 ![](img/day5_dvw.png)
 
 - this is the transfer Characterstics graph for Wp=7 and Wn=0.42 that this width of pmos is more greater that width of nmos
-
-![](img/img/day5_dvm.png)
+  
+![](img/day5_dvm.png)
 
 - From the CMOS inverter transfer curve, the switching voltage is around 0.9 V, showing good balance between the PMOS (7 µm) and NMOS (0.42 µm). The sharp transition indicates strong noise immunity and stable operation. This proves that the CMOS inverter is robust to device variations.
 
