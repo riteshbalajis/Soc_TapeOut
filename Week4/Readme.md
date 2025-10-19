@@ -347,5 +347,106 @@ Always  Vol < Vil because it should be given to next ciruit which should easily 
  - Noise Margin High= VOH-VIH = 1.74898 - 0.734783 = 1.014197
 
  - Noise Margin Low= VIL-VOL = 1.01087 - 0.0673469 = 0.9435231
+
+ ## Power Supply Variation:
+
+ ### Spice Code:
+
+ ![](img/day5_svc.png)
+
+ - in this vdd is varied from 1.8 to 0.8 for this every vdd dc Characterstics is determined by sweeping the vin from 1.8 to 0 with steo if 0.01 
+
+ ![](img/day5_svco.png)
+
+ ### Waveform:
+
+ ![](img/day5_svw.png)
+
+ - this wave indicated that for decrease in vdd the gain margin also changes .
+ 
+ ### Gain Margin:
+
+ - Vdd = 1.8 V
+
+ ![](img/sv1.png)
+
+  |(y1-y2)/(x2-x1) | = (1.72041-0.077551)/(0.762222-1.00444)
+
+  = 6.78
+
+  - Vdd = 1.6 V
+
+  ![](img/sv2.png)
+
+  = 8.03
+
+  - Vdd = 1.4 V
+
+  ![](img/sv3.png)
+
+  = 8.53
+
+  - vdd = 1.2 V
+
+  ![](img/sv4.png)
+
+  = 10.02
+
+  - vdd = 1  v
+
+  ![](img/sv5.png)
+
+  = 9.38
+
+  - vdd = 0.8 V
+
+  ![](img/sv6.png)
+
+  = 8.48
+
+### Transient Analysis 
+
+### for for wp=0.84 wn=0.36 at vdd= 1.8
+
+- spice code:
+
+![](inv/)
+
+- waveform :
+
+![](img/cmos2_w.png)
+
+### for wp=0.84 wn=0.36 at vdd =0.8 V
+
+- Spice Code :
+
+![](img/day5_delayc.png)
+
+- Waveform :
+
+![](img/day5_delay.png)
+
+- Observation :
+
+- At a reduced supply voltage of 0.8 V, the inverter’s PMOS transistor cannot fully charge the output capacitor within the given time, resulting in a lower output swing and increased delay. This shows that insufficient Vdd degrades the inverter’s switching performance.
+
+### Device Variation:
+
+### Spice Code:
+
+![](img/day5_dvc.png)
+
+### Waveform:
+
+![](img/day5_dvw.png)
+
+- this is the transfer Characterstics graph for Wp=7 and Wn=0.42 that this width of pmos is more greater that width of nmos
+
+![](img/img/day5_dvm.png)
+
+- From the CMOS inverter transfer curve, the switching voltage is around 0.9 V, showing good balance between the PMOS (7 µm) and NMOS (0.42 µm). The sharp transition indicates strong noise immunity and stable operation. This proves that the CMOS inverter is robust to device variations.
+
+
+
    
 
