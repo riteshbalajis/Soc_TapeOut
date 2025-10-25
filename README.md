@@ -22,6 +22,8 @@ It summarizes the content covered and tasks completed each week.
 | [**Week 3**](/Week3/Task2) | **Task 2** | Fundamentals of Static Timing Analysis (STA) | Studied timing parameters — **arrival time**, **required time**, **slack**, **setup/hold**, **slew**, **load**, **OCV**, and **fanout**. Analyzed timing paths using DAG models and computed setup/hold slacks. |
 | [**Week 3**](/Week3/Task3) | **Task 3** | STA of VSDBabySoC using OpenSTA | Installed and used **OpenSTA** with Liberty, Netlist, and SDC files. Generated setup/hold timing reports. Verified that both setup (slack = +2.26 ns) and hold (slack = +0.09 ns) met requirements. |
 | [**Week 4**](/Week4) | – | **Device-Level and CMOS Inverter Analysis using NGSpice** | Implemented NMOS ID-VDS/ID-VGS characteristics, studied **velocity saturation**, analyzed **CMOS inverter** VTC, switching threshold, rise/fall delays, noise margins, and power-supply variations using **NGSpice** simulations. |
+| [**Week 5**](/Week5) | – | **GCD Design Floorplanning & Placement using OpenROAD** | Executed the OpenROAD flow for **GCD** using Nangate45. Covered installation, floorplanning, PDN generation, global and detailed placement. Verified outputs with DEF and Verilog files. |
+
 
 ---
 
