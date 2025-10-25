@@ -94,53 +94,53 @@ This sets the foundation for further placement and routing.
 
 - **Code:**
 
-    # Assumes flow_helpers.tcl has been read.
-    read_libraries
-    read_verilog $synth_verilog
-    link_design $top_module
-    read_sdc $sdc_file
-
-    set_thread_count [cpu_count]
-    # Temporarily disable sta's threading due to random failures
-    sta::set_thread_count 1
-
-    utl::metric "IFP::ord_version" [ord::openroad_git_describe]
-    # Note that sta::network_instance_count is not valid after tapcells are added.
-    utl::metric "IFP::instance_count" [sta::network_instance_count]
-
-    initialize_floorplan -site $site \
-    -die_area $die_area \
-    -core_area $core_area
-
-    write_def gcd/post_floorplan.def
-    source $tracks_file
-
-    # remove buffers inserted by synthesis
-    remove_buffers
-
-    if { $pre_placed_macros_file != "" } {
-    source $pre_placed_macros_file
-    }
-
-    # IO Placement		###
-
-    place_pins -hor_layers $io_placer_hor_layer -ver_layers $io_placer_ver_layer -annealing -min_distance 4
-
-    ################################################################
-    # Macro Placement
-    if { [have_macros] } {
-    lassign $macro_place_halo halo_x halo_y
-    set report_dir [make_result_file ${design}_${platform}_rtlmp]
-    rtl_macro_placer -halo_width $halo_x -halo_height $halo_y \
-    -report_directory $report_dir
-    }
-
-    write_def gcd/post_macro_placement.tcl
-    ################################################################
-    # Tapcell insertion
-    eval tapcell $tapcell_args ;# tclint-disable command-args
-
-    write_def gcd/post_tapcell.def
+        # Assumes flow_helpers.tcl has been read.
+        read_libraries
+        read_verilog $synth_verilog
+        link_design $top_module
+        read_sdc $sdc_file
+    
+        set_thread_count [cpu_count]
+        # Temporarily disable sta's threading due to random failures
+        sta::set_thread_count 1
+    
+        utl::metric "IFP::ord_version" [ord::openroad_git_describe]
+        # Note that sta::network_instance_count is not valid after tapcells are added.
+        utl::metric "IFP::instance_count" [sta::network_instance_count]
+    
+        initialize_floorplan -site $site \
+        -die_area $die_area \
+        -core_area $core_area
+    
+        write_def gcd/post_floorplan.def
+        source $tracks_file
+    
+        # remove buffers inserted by synthesis
+        remove_buffers
+    
+        if { $pre_placed_macros_file != "" } {
+        source $pre_placed_macros_file
+        }
+    
+        # IO Placement		###
+    
+        place_pins -hor_layers $io_placer_hor_layer -ver_layers $io_placer_ver_layer -annealing -min_distance 4
+    
+        ################################################################
+        # Macro Placement
+        if { [have_macros] } {
+        lassign $macro_place_halo halo_x halo_y
+        set report_dir [make_result_file ${design}_${platform}_rtlmp]
+        rtl_macro_placer -halo_width $halo_x -halo_height $halo_y \
+        -report_directory $report_dir
+        }
+    
+        write_def gcd/post_macro_placement.tcl
+        ################################################################
+        # Tapcell insertion
+        eval tapcell $tapcell_args ;# tclint-disable command-args
+    
+        write_def gcd/post_tapcell.def
 
 ### Run command
 
@@ -162,7 +162,7 @@ This sets the foundation for further placement and routing.
 - enabled the tracks
 
 
-Explanation:
+**Explanation**:
 The floorplan defines the layout boundaries and ensures that pins are placed correctly for efficient placement.
 
 ---
@@ -174,69 +174,69 @@ Generates the Power Distribution Network (PDN) to supply power/ground connection
 It ensures proper current delivery and voltage stability for all placed cells.
 
 - **Code:**
-
-![](img/ptn_console.png)
-
-- **Output:**
-
-    # Assumes flow_helpers.tcl has been read.
-    read_libraries
-    read_verilog $synth_verilog
-    link_design $top_module
-    read_sdc $sdc_file
-
-    set_thread_count [cpu_count]
-    # Temporarily disable sta's threading due to random failures
-    sta::set_thread_count 1
-
-    utl::metric "IFP::ord_version" [ord::openroad_git_describe]
-    # Note that sta::network_instance_count is not valid after tapcells are added.
-    utl::metric "IFP::instance_count" [sta::network_instance_count]
-
-    initialize_floorplan -site $site \
-    -die_area $die_area \
-    -core_area $core_area
-
-    write_def gcd/post_floorplan.def
-    source $tracks_file
-
-    # remove buffers inserted by synthesis
-    remove_buffers
-
-    if { $pre_placed_macros_file != "" } {
-    source $pre_placed_macros_file
-    }
-
-    # IO Placement		###
-
-    place_pins -hor_layers $io_placer_hor_layer -ver_layers $io_placer_ver_layer -annealing -min_distance 6
-
-    ################################################################
-    # Macro Placement
-    if { [have_macros] } {
-    lassign $macro_place_halo halo_x halo_y
-    set report_dir [make_result_file ${design}_${platform}_rtlmp]
-    rtl_macro_placer -halo_width $halo_x -halo_height $halo_y \
-    -report_directory $report_dir
-    }
-
-    write_def gcd/post_macro_placement.tcl
-    ################################################################
-    # Tapcell insertion
-    eval tapcell $tapcell_args ;# tclint-disable command-args
-
-    write_def gcd/post_tapcell.def
-
-
-    # Power distribution network insertion
-    source $pdn_cfg
-    pdngen
-
-    write_def gcd/post_pdn.def
+    
+        # Assumes flow_helpers.tcl has been read.
+        read_libraries
+        read_verilog $synth_verilog
+        link_design $top_module
+        read_sdc $sdc_file
+    
+        set_thread_count [cpu_count]
+        # Temporarily disable sta's threading due to random failures
+        sta::set_thread_count 1
+    
+        utl::metric "IFP::ord_version" [ord::openroad_git_describe]
+        # Note that sta::network_instance_count is not valid after tapcells are added.
+        utl::metric "IFP::instance_count" [sta::network_instance_count]
+    
+        initialize_floorplan -site $site \
+        -die_area $die_area \
+        -core_area $core_area
+    
+        write_def gcd/post_floorplan.def
+        source $tracks_file
+    
+        # remove buffers inserted by synthesis
+        remove_buffers
+    
+        if { $pre_placed_macros_file != "" } {
+        source $pre_placed_macros_file
+        }
+    
+        # IO Placement		###
+    
+        place_pins -hor_layers $io_placer_hor_layer -ver_layers $io_placer_ver_layer -annealing -min_distance 6
+    
+        ################################################################
+        # Macro Placement
+        if { [have_macros] } {
+        lassign $macro_place_halo halo_x halo_y
+        set report_dir [make_result_file ${design}_${platform}_rtlmp]
+        rtl_macro_placer -halo_width $halo_x -halo_height $halo_y \
+        -report_directory $report_dir
+        }
+    
+        write_def gcd/post_macro_placement.tcl
+        ################################################################
+        # Tapcell insertion
+        eval tapcell $tapcell_args ;# tclint-disable command-args
+    
+        write_def gcd/post_tapcell.def
+    
+    
+        # Power distribution network insertion
+        source $pdn_cfg
+        pdngen
+    
+        write_def gcd/post_pdn.def
 
 ### Run command
 
     openroad -gui -log gcd_logfile.log gcd_nangate45_copy.tcl
+
+![](img/ptn_console.png)
+
+- **Output:**
 
 ![](img/ptn_out2.png)
 -  both gnd and power nets are seen in this Output
@@ -252,7 +252,7 @@ It ensures proper current delivery and voltage stability for all placed cells.
 
 
 
-Explanation:
+**Explanation**:
 The PDN grid covers the core and macros, providing  power connections(gnd and voltage)
 
 ### 3. floor_global_placement.tcl
@@ -262,100 +262,100 @@ Also includes routability adjustments, repair of slew/fanout/capacitance violati
 
 - **Code:**
 
-    # Assumes flow_helpers.tcl has been read.
-    read_libraries
-    read_verilog $synth_verilog
-    link_design $top_module
-    read_sdc $sdc_file
-
-    set_thread_count [cpu_count]
-    # Temporarily disable sta's threading due to random failures
-    sta::set_thread_count 1
-
-    utl::metric "IFP::ord_version" [ord::openroad_git_describe]
-    # Note that sta::network_instance_count is not valid after tapcells are added.
-    utl::metric "IFP::instance_count" [sta::network_instance_count]
-
-    initialize_floorplan -site $site \
-    -die_area $die_area \
-    -core_area $core_area
-
-    write_def gcd/post_floorplan.def
-    source $tracks_file
-
-    # remove buffers inserted by synthesis
-    remove_buffers
-
-    if { $pre_placed_macros_file != "" } {
-    source $pre_placed_macros_file
-    }
-
-    # IO Placement		###
-
-    place_pins -hor_layers $io_placer_hor_layer -ver_layers $io_placer_ver_layer -annealing -min_distance 6
-
-    ################################################################
-    # Macro Placement
-    if { [have_macros] } {
-    lassign $macro_place_halo halo_x halo_y
-    set report_dir [make_result_file ${design}_${platform}_rtlmp]
-    rtl_macro_placer -halo_width $halo_x -halo_height $halo_y \
-    -report_directory $report_dir
-    }
-
-    write_def gcd/post_macro_placement.tcl
-    ################################################################
-    # Tapcell insertion
-    eval tapcell $tapcell_args ;# tclint-disable command-args
-
-    write_def gcd/post_tapcell.def
-
-
-    # Power distribution network insertion
-    source $pdn_cfg
-    pdngen
-
-    write_def gcd/post_pdn.def
-
-    ################################################################
-    # Global placement
-
-    foreach layer_adjustment $global_routing_layer_adjustments {
-    lassign $layer_adjustment layer adjustment
-    set_global_routing_layer_adjustment $layer $adjustment
-    }
-    set_routing_layers -signal $global_routing_layers \
-    -clock $global_routing_clock_layers
-    set_macro_extension 2
-
-    # Global placement skip IOs
-    global_placement -density $global_place_density \
-    -pad_left $global_place_pad -pad_right $global_place_pad -skip_io
-
-    # IO Placement
-    place_pins -hor_layers $io_placer_hor_layer -ver_layers $io_placer_ver_layer
-
-    # Global placement with placed IOs and routability-driven
-    global_placement -routability_driven -density $global_place_density \
-    -pad_left $global_place_pad -pad_right $global_place_pad
-
-    # checkpoint
-    set global_place_db [make_result_file ${design}_${platform}_global_place.db]
-    write_db $global_place_db
-
-    ################################################################
-    # Repair max slew/cap/fanout violations and normalize slews
-    source $layer_rc_file
-    set_wire_rc -signal -layer $wire_rc_layer
-    set_wire_rc -clock -layer $wire_rc_layer_clk
-    set_dont_use $dont_use
-
-    estimate_parasitics -placement
-
-    repair_design -slew_margin $slew_margin -cap_margin $cap_margin
-
-    repair_tie_fanout -separation $tie_separation $tielo_port
-    repair_tie_fanout -separation $tie_separation $tiehi_port
+        # Assumes flow_helpers.tcl has been read.
+        read_libraries
+        read_verilog $synth_verilog
+        link_design $top_module
+        read_sdc $sdc_file
+    
+        set_thread_count [cpu_count]
+        # Temporarily disable sta's threading due to random failures
+        sta::set_thread_count 1
+    
+        utl::metric "IFP::ord_version" [ord::openroad_git_describe]
+        # Note that sta::network_instance_count is not valid after tapcells are added.
+        utl::metric "IFP::instance_count" [sta::network_instance_count]
+    
+        initialize_floorplan -site $site \
+        -die_area $die_area \
+        -core_area $core_area
+    
+        write_def gcd/post_floorplan.def
+        source $tracks_file
+    
+        # remove buffers inserted by synthesis
+        remove_buffers
+    
+        if { $pre_placed_macros_file != "" } {
+        source $pre_placed_macros_file
+        }
+    
+        # IO Placement		###
+    
+        place_pins -hor_layers $io_placer_hor_layer -ver_layers $io_placer_ver_layer -annealing -min_distance 6
+    
+        ################################################################
+        # Macro Placement
+        if { [have_macros] } {
+        lassign $macro_place_halo halo_x halo_y
+        set report_dir [make_result_file ${design}_${platform}_rtlmp]
+        rtl_macro_placer -halo_width $halo_x -halo_height $halo_y \
+        -report_directory $report_dir
+        }
+    
+        write_def gcd/post_macro_placement.tcl
+        ################################################################
+        # Tapcell insertion
+        eval tapcell $tapcell_args ;# tclint-disable command-args
+    
+        write_def gcd/post_tapcell.def
+    
+    
+        # Power distribution network insertion
+        source $pdn_cfg
+        pdngen
+    
+        write_def gcd/post_pdn.def
+    
+        ################################################################
+        # Global placement
+    
+        foreach layer_adjustment $global_routing_layer_adjustments {
+        lassign $layer_adjustment layer adjustment
+        set_global_routing_layer_adjustment $layer $adjustment
+        }
+        set_routing_layers -signal $global_routing_layers \
+        -clock $global_routing_clock_layers
+        set_macro_extension 2
+    
+        # Global placement skip IOs
+        global_placement -density $global_place_density \
+        -pad_left $global_place_pad -pad_right $global_place_pad -skip_io
+    
+        # IO Placement
+        place_pins -hor_layers $io_placer_hor_layer -ver_layers $io_placer_ver_layer
+    
+        # Global placement with placed IOs and routability-driven
+        global_placement -routability_driven -density $global_place_density \
+        -pad_left $global_place_pad -pad_right $global_place_pad
+    
+        # checkpoint
+        set global_place_db [make_result_file ${design}_${platform}_global_place.db]
+        write_db $global_place_db
+    
+        ################################################################
+        # Repair max slew/cap/fanout violations and normalize slews
+        source $layer_rc_file
+        set_wire_rc -signal -layer $wire_rc_layer
+        set_wire_rc -clock -layer $wire_rc_layer_clk
+        set_dont_use $dont_use
+    
+        estimate_parasitics -placement
+    
+        repair_design -slew_margin $slew_margin -cap_margin $cap_margin
+    
+        repair_tie_fanout -separation $tie_separation $tielo_port
+        repair_tie_fanout -separation $tie_separation $tiehi_port
 
 ### Run command
 
@@ -369,10 +369,10 @@ Also includes routability adjustments, repair of slew/fanout/capacitance violati
 
 ![](img/global_out3.png)
 
-- in this its clearly visible that macros are overlapping with each other
+- in this its clearly visible that cells are overlapping with each other
 
 
-Explanation:
+**Explanation**:
 Cells are distributed optimally for timing and routing congestion, forming the base for detailed placement with overlaping of macros.
 
 ### 4. floor_detailed_placement.tcl
@@ -383,133 +383,133 @@ Prepares the design for routing and timing closure.
 
 - **Code:**
 
-    # Assumes flow_helpers.tcl has been read.
-    read_libraries
-    read_verilog $synth_verilog
-    link_design $top_module
-    read_sdc $sdc_file
-
-    set_thread_count [cpu_count]
-    # Temporarily disable sta's threading due to random failures
-    sta::set_thread_count 1
-
-    utl::metric "IFP::ord_version" [ord::openroad_git_describe]
-    # Note that sta::network_instance_count is not valid after tapcells are added.
-    utl::metric "IFP::instance_count" [sta::network_instance_count]
-
-    initialize_floorplan -site $site \
-    -die_area $die_area \
-    -core_area $core_area
-
-    write_def gcd/post_floorplan.def
-    source $tracks_file
-
-    # remove buffers inserted by synthesis
-    remove_buffers
-
-    if { $pre_placed_macros_file != "" } {
-    source $pre_placed_macros_file
-    }
-
-    # IO Placement		###
-
-    place_pins -hor_layers $io_placer_hor_layer -ver_layers $io_placer_ver_layer -annealing -min_distance 6
-
-    ################################################################
-    # Macro Placement
-    if { [have_macros] } {
-    lassign $macro_place_halo halo_x halo_y
-    set report_dir [make_result_file ${design}_${platform}_rtlmp]
-    rtl_macro_placer -halo_width $halo_x -halo_height $halo_y \
-    -report_directory $report_dir
-    }
-
-    write_def gcd/post_macro_placement.tcl
-    ################################################################
-    # Tapcell insertion
-    eval tapcell $tapcell_args ;# tclint-disable command-args
-
-    write_def gcd/post_tapcell.def
-
-
-    # Power distribution network insertion
-    source $pdn_cfg
-    pdngen
-
-    write_def gcd/post_pdn.def
-
-    ################################################################
-    # Global placement
-
-    foreach layer_adjustment $global_routing_layer_adjustments {
-    lassign $layer_adjustment layer adjustment
-    set_global_routing_layer_adjustment $layer $adjustment
-    }
-    set_routing_layers -signal $global_routing_layers \
-    -clock $global_routing_clock_layers
-    set_macro_extension 2
-
-    # Global placement skip IOs
-    global_placement -density $global_place_density \
-    -pad_left $global_place_pad -pad_right $global_place_pad -skip_io
-
-    # IO Placement
-    place_pins -hor_layers $io_placer_hor_layer -ver_layers $io_placer_ver_layer
-
-    # Global placement with placed IOs and routability-driven
-    global_placement -routability_driven -density $global_place_density \
-    -pad_left $global_place_pad -pad_right $global_place_pad
-
-    # checkpoint
-    set global_place_db [make_result_file ${design}_${platform}_global_place.db]
-    write_db $global_place_db
-
-    ################################################################
-    # Repair max slew/cap/fanout violations and normalize slews
-    source $layer_rc_file
-    set_wire_rc -signal -layer $wire_rc_layer
-    set_wire_rc -clock -layer $wire_rc_layer_clk
-    set_dont_use $dont_use
-
-    estimate_parasitics -placement
-
-    repair_design -slew_margin $slew_margin -cap_margin $cap_margin
-
-    repair_tie_fanout -separation $tie_separation $tielo_port
-    repair_tie_fanout -separation $tie_separation $tiehi_port
-
-    ##################################################################
-
-    set_placement_padding -global -left $detail_place_pad -right $detail_place_pad
-    detailed_placement
-
-    # post resize timing report (ideal clocks)
-    report_worst_slack -min -digits 3
-    report_worst_slack -max -digits 3
-    report_tns -digits 3
-    # Check slew repair
-    report_check_types -max_slew -max_capacitance -max_fanout -violators
-
-    utl::metric "RSZ::repair_design_buffer_count" [rsz::repair_design_buffer_count]
-    utl::metric "RSZ::max_slew_slack" [expr [sta::max_slew_check_slack_limit] * 100]
-    utl::metric "RSZ::max_fanout_slack" [expr [sta::max_fanout_check_slack_limit] * 100]
-    utl::metric "RSZ::max_capacitance_slack" [expr [sta::max_capacitance_check_slack_limit] * 100]
-
-    ################################################################
-    # Detailed Placement
-
-    detailed_placement
-
-    # Capture utilization before fillers make it 100%
-    utl::metric "DPL::utilization" [format %.1f [expr [rsz::utilization] * 100]]
-    utl::metric "DPL::design_area" [sta::format_area [rsz::design_area] 0]
-
-    # checkpoint
-    set dpl_db [make_result_file ${design}_${platform}_dpl.db]
-    write_db $dpl_db
-
-    set verilog_file [make_result_file ${design}_${platform}.v]
-    write_verilog $verilog_file
+        # Assumes flow_helpers.tcl has been read.
+        read_libraries
+        read_verilog $synth_verilog
+        link_design $top_module
+        read_sdc $sdc_file
+    
+        set_thread_count [cpu_count]
+        # Temporarily disable sta's threading due to random failures
+        sta::set_thread_count 1
+    
+        utl::metric "IFP::ord_version" [ord::openroad_git_describe]
+        # Note that sta::network_instance_count is not valid after tapcells are added.
+        utl::metric "IFP::instance_count" [sta::network_instance_count]
+    
+        initialize_floorplan -site $site \
+        -die_area $die_area \
+        -core_area $core_area
+    
+        write_def gcd/post_floorplan.def
+        source $tracks_file
+    
+        # remove buffers inserted by synthesis
+        remove_buffers
+    
+        if { $pre_placed_macros_file != "" } {
+        source $pre_placed_macros_file
+        }
+    
+        # IO Placement		###
+    
+        place_pins -hor_layers $io_placer_hor_layer -ver_layers $io_placer_ver_layer -annealing -min_distance 6
+    
+        ################################################################
+        # Macro Placement
+        if { [have_macros] } {
+        lassign $macro_place_halo halo_x halo_y
+        set report_dir [make_result_file ${design}_${platform}_rtlmp]
+        rtl_macro_placer -halo_width $halo_x -halo_height $halo_y \
+        -report_directory $report_dir
+        }
+    
+        write_def gcd/post_macro_placement.tcl
+        ################################################################
+        # Tapcell insertion
+        eval tapcell $tapcell_args ;# tclint-disable command-args
+    
+        write_def gcd/post_tapcell.def
+    
+    
+        # Power distribution network insertion
+        source $pdn_cfg
+        pdngen
+    
+        write_def gcd/post_pdn.def
+    
+        ################################################################
+        # Global placement
+    
+        foreach layer_adjustment $global_routing_layer_adjustments {
+        lassign $layer_adjustment layer adjustment
+        set_global_routing_layer_adjustment $layer $adjustment
+        }
+        set_routing_layers -signal $global_routing_layers \
+        -clock $global_routing_clock_layers
+        set_macro_extension 2
+    
+        # Global placement skip IOs
+        global_placement -density $global_place_density \
+        -pad_left $global_place_pad -pad_right $global_place_pad -skip_io
+    
+        # IO Placement
+        place_pins -hor_layers $io_placer_hor_layer -ver_layers $io_placer_ver_layer
+    
+        # Global placement with placed IOs and routability-driven
+        global_placement -routability_driven -density $global_place_density \
+        -pad_left $global_place_pad -pad_right $global_place_pad
+    
+        # checkpoint
+        set global_place_db [make_result_file ${design}_${platform}_global_place.db]
+        write_db $global_place_db
+    
+        ################################################################
+        # Repair max slew/cap/fanout violations and normalize slews
+        source $layer_rc_file
+        set_wire_rc -signal -layer $wire_rc_layer
+        set_wire_rc -clock -layer $wire_rc_layer_clk
+        set_dont_use $dont_use
+    
+        estimate_parasitics -placement
+    
+        repair_design -slew_margin $slew_margin -cap_margin $cap_margin
+    
+        repair_tie_fanout -separation $tie_separation $tielo_port
+        repair_tie_fanout -separation $tie_separation $tiehi_port
+    
+        ##################################################################
+    
+        set_placement_padding -global -left $detail_place_pad -right $detail_place_pad
+        detailed_placement
+    
+        # post resize timing report (ideal clocks)
+        report_worst_slack -min -digits 3
+        report_worst_slack -max -digits 3
+        report_tns -digits 3
+        # Check slew repair
+        report_check_types -max_slew -max_capacitance -max_fanout -violators
+    
+        utl::metric "RSZ::repair_design_buffer_count" [rsz::repair_design_buffer_count]
+        utl::metric "RSZ::max_slew_slack" [expr [sta::max_slew_check_slack_limit] * 100]
+        utl::metric "RSZ::max_fanout_slack" [expr [sta::max_fanout_check_slack_limit] * 100]
+        utl::metric "RSZ::max_capacitance_slack" [expr [sta::max_capacitance_check_slack_limit] * 100]
+    
+        ################################################################
+        # Detailed Placement
+    
+        detailed_placement
+    
+        # Capture utilization before fillers make it 100%
+        utl::metric "DPL::utilization" [format %.1f [expr [rsz::utilization] * 100]]
+        utl::metric "DPL::design_area" [sta::format_area [rsz::design_area] 0]
+    
+        # checkpoint
+        set dpl_db [make_result_file ${design}_${platform}_dpl.db]
+        write_db $dpl_db
+    
+        set verilog_file [make_result_file ${design}_${platform}.v]
+        write_verilog $verilog_file
 
 ### Run command
 
@@ -524,12 +524,16 @@ Prepares the design for routing and timing closure.
 
 ![](img/detailed_out3.png)
 
-- all the macros doesnt overlap with each other and placed in proper placement.
+- all the cells doesnt overlap with each other and placed in proper placement.
 
 ![](img/detailed_out4.png)
 
 - this is further interior section of each block
 
 
-- Explanation:
+**Explanation**:
 Ensures no overlapping cells, finalizes cell locations, and maximizes utilization while maintaining timing integrity.
+
+
+
+
