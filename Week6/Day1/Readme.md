@@ -178,8 +178,8 @@ The command run_synthesis performs the synthesis stage of the flow.
 It converts the Verilog RTL design into a gate-level netlist using Yosys and maps it to standard cells from the PDK library.
 
 
-![](img.report2.png)
-![No of dff](img.report1.png)
+![](img/report2.png)
+![No of dff](img/report1.png)
 ![](img/report3.png)
 
 ## Calculating Flop Ratio
