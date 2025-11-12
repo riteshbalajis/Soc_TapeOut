@@ -313,7 +313,7 @@ The technology file (`.tech`) in Magic can be modified to include or update desi
 
 ### DRC Check after modification :
 
-![](img/drc_newlla.png)
+![](img/drc_nwella.png)
 
 - now the error is shown in drc check for same nwell 
 
