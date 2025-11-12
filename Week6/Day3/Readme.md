@@ -190,6 +190,138 @@ tfd=4.07763 ns - 4.0499ns
 tfd=0.02773 ns
 
 
+---
+
+## Introduction to Magic Tool and DRC Rules
+
+Magic is a layout editor used for designing and verifying integrated circuits. It allows visualization, editing, and checking of layouts with built-in support for technology-specific design rules. One of its key features is Design Rule Checking (DRC), which ensures that the layout follows manufacturing constraints.
+
+### Downloading DRC Files for practice
+
+    wget http://opencircuitdesign.com/open_pdks/archive/drc_tests.tgz
+
+    `tar xfz drc_tests.tgz
+
+-opening magicrc
+
+
+    cd drc_tests
+
+    ls -al
+
+    gvim .magicrc`
+
+![](img/c1.png)
+![](img/c2.png)
+
+### Opening Magic
+
+-command
+
+    magic -d XR &
+
+![](img/magic_con.png)
+
+- this will open empyt magic screen 
+
+- opening poly.mag 
+
+    load poly
+
+![](img/load_poly.png)
+![](img/poly_layout.png)
+
+### Type of the metal
+
+![](img/poly_type.png)
+![](img/poly_type2.png)
+
+![](img/nwell_rule.png)
+
+- both are poly that should be placed with minimum of spacing but it is not followed here .let us see the sapcing between these two
+
+![](img/poly_spacing.png)
+
+- from this we can see that the distance between these two is 0.2 u only
+error should be shown while we do drc check .
+
+### DRC Check:
+
+- command
+
+    drc check
+    drc why
+
+![](img/drc_poly_a.png)
+
+- there is no drc error shown in these section while we do drc check,so there must be some missing contraints in sky130A.tech file.
+
+### Modfication of sky130A.tech:
+
+
+
+The technology file (`.tech`) in Magic can be modified to include or update design rules. For the Poly9 layer, a specific DRC rule defines the minimum spacing between poly resistors and other features like diffusion or taps. This ensures that no overlap or violation occurs during layout design.
+
+![](img/poly_mod1.png)
+![](img/poly_mod2.png)
+
+### Loading the modified tech file
+![](img/poly_techload.png)
+
+
+### Drc Check
+
+![](img/drc_poly_b.png)
+
+- now the error is showing in drc check
+
+---
+
+## N-Well Tap Rule Violations in Layout
+
+    load nwell.mag
+
+![](img/open_nwell.png)
+
+![](img/nwell_what.png)
+
+![](img.nwell_rule.png)
+
+- Rule: All n-wells will contain metal-contacted tap (rule checks only for licon on tap) . Rule exempted from high voltage cells inside UHVI
+
+- This rule ensures that every n-well region includes a metal-connected tap, providing a proper connection to the power supply and preventing latch-up issues.
+
+- this indicates that the layer is nwell layer without the n-well tap, so the error should be arise in drc check
+
+### DRC Check:
+
+- command:
+
+    style drc(full)
+    drc check
+    drc why
+
+
+![](img/drc_nwell.png)
+
+- but no error is shown at drc check so we want to include some constraints in tech file as it checks for this drc rule/
+
+### Modification of sky130A.tech
+
+![](img/nwell_mod1.png)
+![](img/nwell_mod2.png)
+
+### DRC Check after modification :
+
+![](img/drc_newlla.png)
+
+- now the error is shown in drc check for same nwell 
+
+---
+
+
+
+
 
 
 
