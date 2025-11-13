@@ -29,7 +29,7 @@ For a layout to be well-structured and compatible with automated tools, certain 
 
 - adding grid to invertes layout to check whether layout satisfies the rule
 
-    grid 0.46um 0.34um 0.23um 0.17um
+        grid 0.46um 0.34um 0.23um 0.17um
 
 ![](img/grid_set.png)
 
@@ -67,9 +67,9 @@ For a layout to be well-structured and compatible with automated tools, certain 
 
 - Copy the .lef files to the picorv32a/src/
 
-    cp sky130_vsdinv.lef ~/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/src/
-
-    cp libs/sky130_fd_sc_hd__* ~/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/src/
+        cp sky130_vsdinv.lef ~/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/src/
+    
+        cp libs/sky130_fd_sc_hd__* ~/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/src/
 
 - modify the confif.tcl file 
 
@@ -105,8 +105,9 @@ For a layout to be well-structured and compatible with automated tools, certain 
 
 ![](img/inv_openlane.png)
 
-- synthesis 
-    run_synthesis
+- synthesis
+  
+        run_synthesis
 ![](img/inv_synthesis.png)
 ![](img/inv_synth2.png)
 ![](img/inv_synth3.png)
@@ -158,9 +159,9 @@ For a layout to be well-structured and compatible with automated tools, certain 
 
 - Command:
 
-    init_floorplan
-    place_io
-    tap_decap_or
+        init_floorplan
+        place_io
+        tap_decap_or
 
 ![](img/floorplan_inv.png)
 ![](img/floorplan_inv2.png)
@@ -173,9 +174,9 @@ For a layout to be well-structured and compatible with automated tools, certain 
 
 - the result is stored in the picorv32a file in directory /Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/new/results/placement/
 
-    cd /Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/new/results/placement/
-    magic -T ~/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech \
-    lef read ../../tmp/merged.lef def read picorv32a.placement.def &
+        cd /Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/new/results/placement/
+        magic -T ~/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech \
+        lef read ../../tmp/merged.lef def read picorv32a.placement.def &
 
 ![](img/inv_place1.png)
 
@@ -193,27 +194,28 @@ For a layout to be well-structured and compatible with automated tools, certain 
 - Static Timing Analysis (STA) is a method used to evaluate the timing performance of a circuit without running simulations. It checks all possible paths to ensure signals meet setup and hold time requirements for reliable operation.
 
 - intialize docker and run openlane
-    cd ~/Desktop/work/tools/openlane_working_dir/openlane
-
-    alias docker='docker run -it -v $(pwd):/openLANE_flow -v $PDK_ROOT:$PDK_ROOT -e PDK_ROOT=$PDK_ROOT \
-    -u $(id -u $USER):$(id -g $USER) efabless/openlane:v0.21'
-
-    docker
+  
+        cd ~/Desktop/work/tools/openlane_working_dir/openlane
+    
+        alias docker='docker run -it -v $(pwd):/openLANE_flow -v $PDK_ROOT:$PDK_ROOT -e PDK_ROOT=$PDK_ROOT \
+        -u $(id -u $USER):$(id -g $USER) efabless/openlane:v0.21'
+    
+        docker
 
 - synthesis 
 
-    ./flow.tcl -interactive
-
-    package require openlane 0.9
-
-    prep -design picorv32a
-
-    set lefs [glob $::env(DESIGN_DIR)/src/*.lef]
-    add_lefs -src $lefs
-
-    set ::env(SYNTH_SIZING) 1
-
-    run_synthesis
+        ./flow.tcl -interactive
+    
+        package require openlane 0.9
+    
+        prep -design picorv32a
+    
+        set lefs [glob $::env(DESIGN_DIR)/src/*.lef]
+        add_lefs -src $lefs
+    
+        set ::env(SYNTH_SIZING) 1
+    
+        run_synthesis
 
 - load capacitance, fanout, and other parameters are determined from the sky130_fd_sc_hd__typical.lib located under openlane/vsdstdcelldesign/libs/ directory.
 
@@ -244,20 +246,20 @@ TNS (Total Negative Slack) and WNS (Worst Negative Slack) are negative whihc ind
 
 - Re Synthesis with adding some parameter
 
-    prep -design picorv32a -tag 11-11_16-13 -overwrite
-
-    set lefs [glob $::env(DESIGN_DIR)/src/*.lef]
-    add_lefs -src $lefs
-
-    # value for SYNTH_SIZING
-    set ::env(SYNTH_SIZING) 1
-
-    # value for SYNTH_MAX_FANOUT
-    set ::env(SYNTH_MAX_FANOUT) 4
-
-    echo $::env(SYNTH_DRIVING_CELL)
-
-    run_synthesis
+        prep -design picorv32a -tag 11-11_16-13 -overwrite
+    
+        set lefs [glob $::env(DESIGN_DIR)/src/*.lef]
+        add_lefs -src $lefs
+    
+        # value for SYNTH_SIZING
+        set ::env(SYNTH_SIZING) 1
+    
+        # value for SYNTH_MAX_FANOUT
+        set ::env(SYNTH_MAX_FANOUT) 4
+    
+        echo $::env(SYNTH_DRIVING_CELL)
+    
+        run_synthesis
 
 ![](img/pic_synth_success.png)
 
@@ -279,12 +281,12 @@ This reduces the signal delay, improving path timing and thereby decreasing nega
 
 - command 
 
-    report_net -connections _11672_
-    replace_cell _14510_ sky130_fd_sc_hd__or3_4
+        report_net -connections _11672_
+        replace_cell _14510_ sky130_fd_sc_hd__or3_4
 
 - to get timing details:
 
-    report_checks -fields {net cap slew input_pins fanout} -digits 4
+        report_checks -fields {net cap slew input_pins fanout} -digits 4
 
 ![](img/slack2.png)
 
@@ -335,15 +337,15 @@ This reduces the signal delay, improving path timing and thereby decreasing nega
 - First, create a backup of the original synthesis netlist file.
 Then, save and overwrite it with the updated Verilog netlist containing the modified cell changes. 
 
-    cd ~/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/30-10_11-30/results/synthesis/
-
-    cp picorv32a.synthesis.v picorv32a.synthesis_old.v
+        cd ~/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/30-10_11-30/results/synthesis/
+    
+        cp picorv32a.synthesis.v picorv32a.synthesis_old.v
 
 ![](img/synth_copy.png)
 
 - write the modfied file :
 
-    write_verilog ~/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/11-11_16-13/results/synthesis/picorv32a.synthesis.v
+        write_verilog ~/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/11-11_16-13/results/synthesis/picorv32a.synthesis.v
 
 ![](img/write_verilog.png)
 
@@ -374,7 +376,7 @@ Then, save and overwrite it with the updated Verilog netlist containing the modi
 
 - Running Synthesis:
 
-    run_synthesis
+        run_synthesis
 ![](img/cts2.png)
 
 - tns and wns is 0 
