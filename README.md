@@ -23,12 +23,14 @@ It summarizes the content covered and tasks completed each week.
 | [**Week 3**](/Week3/Task3) | **Task 3** | STA of VSDBabySoC using OpenSTA | Installed and used **OpenSTA** with Liberty, Netlist, and SDC files. Generated setup/hold timing reports. Verified that both setup (slack = +2.26 ns) and hold (slack = +0.09 ns) met requirements. |
 | [**Week 4**](/Week4) | – | **Device-Level and CMOS Inverter Analysis using NGSpice** | Implemented NMOS ID-VDS/ID-VGS characteristics, studied **velocity saturation**, analyzed **CMOS inverter** VTC, switching threshold, rise/fall delays, noise margins, and power-supply variations using **NGSpice** simulations. |
 | [**Week 5**](/Week5) | – | **GCD Design Floorplanning & Placement using OpenROAD** | Executed the OpenROAD flow for **GCD** using Nangate45. Covered installation, floorplanning, PDN generation, global and detailed placement. Verified outputs with DEF and Verilog files. |
-
+| [**Week 6**](/Week6) | – | **Routing, DRC, Parasitics & Layout Verification** | Covered global/detailed routing, DRC rules, parasitic extraction (SPEF), and post-route timing analysis. |
+| [**Week 6**](/Week6/Day1) | **Day 1** | Introduction to Routing | Learned preferred L-shaped routing, maze routing (Lee’s algorithm), and grid-based shortest-path finding. |
+| [**Week 6**](/Week6/Day2) | **Day 2** | Global & Detailed Routing | Explored FastRoute for global routing, route guide creation, and TritonRoute for detailed routing. |
+| [**Week 6**](/Week6/Day3) | **Day 3** | DRC Rules & Layout Validation | Studied width, spacing, pitch, short checks, and layer orientation rules for clean layout routing. |
+| [**Week 6**](/Week6/Day4) | **Day 4** | Parasitic Extraction (SPEF) | Generated SPEF after routing and learned how RC parasitics improve post-route timing accuracy. |
+| [**Week 6**](/Week6/Day5) | **Day 5** | Post-Route Timing & Verification | Performed post-route STA with parasitics and verified DRC cleanliness and timing closure. |
 
 ---
 
-### Notes
-- All simulations and analyses were performed using open-source tools: **Yosys**, **Icarus Verilog**, **GTKWave**, **OpenSTA**, and **NGSpice**.  
-- Reports, netlists, and waveform outputs are available in their respective weekly folders.
 
----
+
