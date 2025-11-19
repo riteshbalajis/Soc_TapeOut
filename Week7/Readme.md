@@ -154,7 +154,7 @@ This ensures the OpenROAD flow can find your design’s source code during synth
 
 ### Clock Tree Viewer:
 
-![](img/cls_tree2.png)
+![](img/cts_tree2.png)
 
 - **Top red marker** : The main clock source (clk) where the clock enters the design.
 - **Long blue vertical line** : The primary line that carries the clock before it branches.
