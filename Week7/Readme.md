@@ -231,7 +231,7 @@ The big MET4 blockage inside the OBS section was covering most of the macro area
 ###  correction is made in avsddac.lef:
 - in metal layer 4 under the obs section we removed
 
-![](img/dac_lef_b.png)
+![](img/dac_lef_a.png)
 
 
 - also the  PLL position may be adjusted  because placing it below the DAC can lead to some issues. It may cause wires to overlap, make routing crowded, or create unnecessary routing complications. Keeping some spacing helps the tools place and route the design more cleanly.So creating a macro.tcl file for relocate the pll 
