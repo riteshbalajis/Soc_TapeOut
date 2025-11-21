@@ -196,8 +196,45 @@ This ensures the OpenROAD flow can find your design’s source code during synth
 
 ---
 
+### Routing:
 
-- The PLL position needs to be adjusted because placing it below the DAC can lead to routing issues. It may cause wires to overlap, make routing crowded, or create unnecessary routing complications. Keeping some spacing helps the tools place and route the design more cleanly.So creating a macro.tcl file for relocate the pll 
+- routing fails with congestion error , while inspecting the error through the drc viewer it is clear that the error is from pins of dac 
+
+![](img/drc1.png)
+![](img/drc2.png)
+
+Routing Debug Attempts Before Identifying the MET4 OBS Issue
+
+Before discovering that the large MET4 OBS blockage in the LEF was the root cause of routing congestion, multiple routing-related settings were tried to reduce congestion and improve routability. Below are the methods attempted along with their expected effects and syntax.
+
+| Control Area            | Variable Name             | Example Line in `config.mk`                      | Explanation (why it is done)                                               |
+|-------------------------|----------------------------|--------------------------------------------------|-------------------------------------------------------------------------------|
+| Core Sizing             | CORE_UTILIZATION          | export CORE_UTILIZATION = 0.50                   | Defines how much of the core can be filled with standard cells. A lower value leaves more free space for routing. |
+| Placement Density       | PLACE_DENSITY             | export PLACE_DENSITY = 0.40                      | Controls how tightly cells are packed. Reducing it increases whitespace for routing and reduces congestion. |
+| Die/Core Area Size      | DIE_AREA                  | export DIE_AREA = "0 0 3000 3000"                | Expands the chip area. A larger die gives more room for placement and routing, reducing congestion and allowing cleaner routing paths. |
+| Macro Halo (Base)       | MACRO_PLACE_HALO          | export MACRO_PLACE_HALO = 50                     | Adds a keep-out margin around macros to prevent cells from crowding macro pins, improving pin escape routing. |
+| Macro Halo (Parser Fix) | MACRO_PLACE_HALO_X        | export MACRO_PLACE_HALO_X = 50                   | Explicitly sets horizontal halo spacing to avoid internal Tcl parsing issues and maintain consistent spacing. |
+| Macro Channel Spacing   | FP_MACRO_CHANNEL_X        | export FP_MACRO_CHANNEL_X = 100                  | Ensures a minimum routing gap between macros, creating clean routing channels for signals to pass through. |
+| Router Effort           | GRT_CONGESTION_ITERATIONS | export GRT_CONGESTION_ITERATIONS = 120           | Increases the number of congestion-repair attempts during global routing, helping the tool find better routing solutions. |
+
+
+
+
+### Correction in avsddac.lef file (OBS - Obstruction Section Reduction) :
+
+- avsddac.lef
+
+![](img/dac_lef_b.png)
+
+The big MET4 blockage inside the OBS section was covering most of the macro area, so the router had almost no space left to route signals on MET4. Because of this, the tool ran into heavy congestion and couldn’t complete routing. After removing that large blockage, MET4 became available again, giving the router enough room to finish routing without errors.
+
+###  correction is made in avsddac.lef:
+- in metal layer 4 under the obs section we removed
+
+![](img/dac_lef_b.png)
+
+
+- also the  PLL position may be adjusted  because placing it below the DAC can lead to some issues. It may cause wires to overlap, make routing crowded, or create unnecessary routing complications. Keeping some spacing helps the tools place and route the design more cleanly.So creating a macro.tcl file for relocate the pll 
 
 - macro.tcl
 
