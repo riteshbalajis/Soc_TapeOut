@@ -200,8 +200,8 @@ This ensures the OpenROAD flow can find your design’s source code during synth
 
 - routing fails with congestion error , while inspecting the error through the drc viewer it is clear that the error is from pins of dac 
 
-![](img/drc1.png)
 ![](img/drc2.png)
+![](img/drc1.png)
 
 Routing Debug Attempts Before Identifying the MET4 OBS Issue
 
