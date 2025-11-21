@@ -236,8 +236,8 @@ The big MET4 blockage inside the OBS section was covering most of the macro area
 
 ## After Correction :
 
-![](img/route_p1)
-![](img/route_p2)
+![](img/route_p1.png)
+![](img/route_p2.png)
 
 
 - also the  PLL position may be adjusted  because placing it below the DAC can lead to some issues. It may cause wires to overlap, make routing crowded, or create unnecessary routing complications. Keeping some spacing helps the tools place and route the design more cleanly.So creating a macro.tcl file for relocate the pll 
