@@ -29,6 +29,8 @@ It summarizes the content covered and tasks completed each week.
 | [**Week 6**](/Week6/Day3) | **Day 3** | DRC Rules & Layout Validation | Studied width, spacing, pitch, short checks, and layer orientation rules for clean layout routing. |
 | [**Week 6**](/Week6/Day4) | **Day 4** | Parasitic Extraction (SPEF) | Generated SPEF after routing and learned how RC parasitics improve post-route timing accuracy. |
 | [**Week 6**](/Week6/Day5) | **Day 5** | Post-Route Timing & Verification | Performed post-route STA with parasitics and verified DRC cleanliness and timing closure. |
+| [**Week 7**](/Week7) | – | **BabySoC Physical Design & Post-Route Debug** | Completed synthesis, floorplanning, placement, clock tree synthesis, and initial routing of BabySoC. Debugged routing congestion and MET4 OBS violations. Updated LEF/macros and resolved DRC and timing issues. |
+| [**Week 8**](/Week8) | – | **Post-Layout STA & Timing Analysis** | Performed post-route static timing analysis across multiple PVT corners using routed SPEF, Liberty, netlist, and SDC files. Compared WNS, TNS, and worst slack reports; analyzed parasitic and CTS effects on setup/hold timing. |
 
 ---
 
