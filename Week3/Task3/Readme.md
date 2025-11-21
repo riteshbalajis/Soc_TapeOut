@@ -248,3 +248,24 @@ Hold checks ensure that data launched by a clock edge does **not arrive too earl
  The analyzed hold path between `_9085_` and `_8462_` passes the timing check.  
 A **positive slack of 0.09 ns** indicates that data remains stable long enough after the clock edge, ensuring reliable flip-flop operation across PVT corners.
 
+
+## Result:
+
+![](img/cmp_table.png)
+
+### Total Negative Slack:
+
+![](img/tns.png)
+
+### Worst Negative Slack:
+
+![](img/wns.png)
+
+### Worst Min Slack:
+
+![](img/worst_min_slack.png)
+
+# Worst Max Slack:
+
+![](img/worst_slack.png)
+
