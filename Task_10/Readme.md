@@ -53,6 +53,9 @@ The **Housekeeping SPI (HKSPI)** is an SPI slave block that allows an external S
 
 ##  HKSPI Communication Protocol
 
+![](img/hksignalling.png)
+
+
 ### **Transaction Steps**
 1. **CSB pulled LOW** → enter **COMMAND** state  
 2. **Command byte (8 bits, MSB first)** defines operation mode  
@@ -63,6 +66,8 @@ The **Housekeeping SPI (HKSPI)** is an SPI slave block that allows an external S
 ---
 
 ## ⚙ Modes of Operation
+
+![](img/hk_mode.png)
 
 ### **1. Streaming Mode**
 - Activated when **command bits [5:3] = 000**  
@@ -176,9 +181,6 @@ The testbench performs the following functional checks:
 ---
 # Simulation of HKSPI
 
-## Hierarchy of the Caravel File
-
-![](img/hi.png)
 
 Inside the HKSPI testbench folder (`caravel/verilog/dv/caravel/mgmt_soc/hkspi`) there is a Makefile to run the testbench.
 
