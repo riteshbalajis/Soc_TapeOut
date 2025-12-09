@@ -53,7 +53,7 @@ The **Housekeeping SPI (HKSPI)** is an SPI slave block that allows an external S
 
 ##  HKSPI Communication Protocol
 
-![](img/hksignalling.png)
+![](img/hk_signalling.png)
 
 
 ### **Transaction Steps**
