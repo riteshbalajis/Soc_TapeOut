@@ -204,8 +204,7 @@ This error occurred because many variables were declared twice.
 A variable was declared as an `output` in the module header, and then declared again inside the module as a `reg`.  
 To resolve this, I changed those variables to `output reg`.  
 
-The updated code is uploaded here:  
-**Dummy GitHub Link:** https://github.com/example/your-hkspi-fix
+
 
 ## Running Simulation Again
 
