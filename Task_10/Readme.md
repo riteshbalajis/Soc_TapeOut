@@ -91,6 +91,10 @@ Once enabled:
 - Flash output is forwarded to **SDO**  
 - Mode ends when CSB is released (goes HIGH)
 
+### HKSpi Reg Map:
+
+![](img/hk_regmap.png)
+
 ---
 
 # SKY130 Installation, Caravel Setup & HKSPI Testbench 
