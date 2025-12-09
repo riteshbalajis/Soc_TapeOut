@@ -320,3 +320,30 @@ The waveform clearly shows data being read from registers 0 to 18.
 
 ---
 
+
+## Gate Level Simulation og Hkspi (GLS):
+
+- Generating netlist file for housekeeping_spi.V
+
+![](img/synth1.png)
+![](img/synth2.png)
+
+### Statistics:
+
+![](img/state1.png)
+![](img/write_verilog_hk.png)
+
+### Synthesised Netlist:
+
+![](img/hkspi_net1.png)
+![](img/hkspi_net2.png)
+
+### Simulation:
+
+![](img/sim2.png)
+
+### Waveform:
+
+![](img/wave_g1.png)
+
+
