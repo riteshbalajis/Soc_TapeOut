@@ -370,7 +370,7 @@ digital_pll.v not found error arise due to  same improper directory in caravel_n
 
 | RTL Simulation | GLS Simulation |
 |---------|---------|
-| ![](img/rtlp_wave.png) | ![](img/glsp_wave.png) |
+| ![](img/rltp_wave.png) | ![](img/glsp_wave.png) |
 
 
 
