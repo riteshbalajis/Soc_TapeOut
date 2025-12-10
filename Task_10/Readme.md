@@ -341,6 +341,24 @@ The waveform clearly shows data being read from registers 0 to 18.
 
 ### Simulation:
 
+*Errors:*
+
+
+![](img/mgmt_e.png)
+
+the mgmt_defines.v and mgmt_core_wrapper.v are present inside the caravel_pico directory , so updated the proper directory in caravel_netlist.v
+
+![](img/mgmt_es.png)
+
+
+![](img/dpll_e.png)
+
+digital_pll.v not found error arise due to  same improper directory in caravel_netlist.v file. Changed the directory to proper gl directory for multiple includes present in it.
+
+![](img/dpll_es.png)
+
+### Simulation :
+
 ![](img/glsp1.png)
 ![](img/glsp2.png)
 
